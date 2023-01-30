@@ -164,11 +164,17 @@ class ConnectionManager {
       release: client => {
         if (client.queryType === 'read') {
           this.pool.read.release(client);
+        } else if (client.queryType === 'shard') {
+          this.pool.shard.release(client);
         } else {
           this.pool.write.release(client);
         }
       },
-      acquire: (queryType, useMaster) => {
+      acquire: (queryType, useMaster, sharded) => {
+        if (sharded) {
+          return this.pool.shard.acquire();
+        }
+
         useMaster = useMaster === undefined ? false : useMaster;
         if (queryType === 'SELECT' && !useMaster) {
           return this.pool.read.acquire();
@@ -182,15 +188,33 @@ class ConnectionManager {
       destroyAllNow: async () => {
         await Promise.all([
           this.pool.read.destroyAllNow(),
-          this.pool.write.destroyAllNow()
+          this.pool.write.destroyAllNow(),
+          this.pool.shard.destroyAllNow()
         ]);
 
         debug('all connections destroyed');
       },
       drain: async () => Promise.all([
         this.pool.write.drain(),
-        this.pool.read.drain()
+        this.pool.read.drain(),
+        this.pool.shard.drain()
       ]),
+      shard: new Pool({
+        name: 'sequelize:shard',
+        create: async () => {
+          const connection = await this._connect(config.replication.shard);
+          connection.queryType = 'shard';
+          return connection;
+        },
+        destroy: connection => this._disconnect(connection),
+        validate: config.pool.validate,
+        max: config.pool.max,
+        min: config.pool.min,
+        acquireTimeoutMillis: config.pool.acquire,
+        idleTimeoutMillis: config.pool.idle,
+        reapIntervalMillis: config.pool.evict,
+        maxUses: config.pool.maxUses
+      }),
       read: new Pool({
         name: 'sequelize:read',
         create: async () => {
@@ -283,7 +307,7 @@ class ConnectionManager {
     let result;
 
     try {
-      result = await this.pool.acquire(options.type, options.useMaster);
+      result = await this.pool.acquire(options.type, options.useMaster, options.sharded);
     } catch (error) {
       if (error instanceof TimeoutError) throw new errors.ConnectionAcquireTimeoutError(error);
       throw error;
