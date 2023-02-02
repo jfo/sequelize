@@ -1445,7 +1445,7 @@ class Model {
    * @returns {Promise}
    */
   static async drop(options) {
-    return await this.queryInterface.dropTable(this.getTableName(options), options);
+    return await this.queryInterface.dropTable(this.getTableName(options), {sharded: this.options.sharded, ...options});
   }
 
   static async dropSchema(schema) {
