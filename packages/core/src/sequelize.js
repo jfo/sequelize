@@ -703,7 +703,8 @@ Use Sequelize#query if you wish to use replacements.`);
 
     return await retry(async () => {
       if (options.transaction === undefined) {
-        options.transaction = this.getCurrentClsTransaction();
+        // options.transaction = this.getCurrentClsTransaction();
+        options.transaction = this.constructor._cls.get('transaction');
       }
 
       checkTransaction();
