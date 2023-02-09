@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../../src/dialects/abstract/query-interface.types.ts"],
+  "sourcesContent": ["import type { QueryRawOptions, Sequelize } from '../../sequelize';\nimport type { AbstractQueryGenerator, CreateSchemaQueryOptions } from './query-generator';\n\nexport interface QueryInterfaceOptions {\n  sequelize: Sequelize;\n  queryGenerator: AbstractQueryGenerator;\n}\n\n/** Options accepted by {@link AbstractQueryInterfaceTypeScript#createSchema} */\nexport interface CreateSchemaOptions extends CreateSchemaQueryOptions, QueryRawOptions {}\n"],
+  "mappings": ";;;;;;;;;;;;;;AAAA;AAAA;",
+  "names": []
+}
