@@ -1025,6 +1025,7 @@ export declare class ARRAY<T extends AbstractDataType<any>> extends AbstractData
     toDialectDataType(dialect: AbstractDialect): this;
     attachUsageContext(usageContext: DataTypeUseContext): this;
     static is<T extends AbstractDataType<any>>(obj: unknown, type: new () => T): obj is ARRAY<T>;
+    clone(): this;
 }
 export interface GeometryOptions {
     type?: GeoJsonType | undefined;
