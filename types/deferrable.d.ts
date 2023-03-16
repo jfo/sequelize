@@ -87,7 +87,7 @@ export declare class Deferrable {
                  */
                 readonly SET_DEFERRED: {
                     new (constraints: string[]): {
-                        readonly "__#3@#constraints": string[];
+                        readonly "__#4@#constraints": string[];
                         toSql(queryGenerator: AbstractQueryGenerator): string;
                         toString(queryGenerator: AbstractQueryGenerator): void;
                     };
@@ -109,7 +109,7 @@ export declare class Deferrable {
                         toString(queryGenerator: AbstractQueryGenerator): void;
                     });
                     readonly SET_DEFERRED: any & ((constraints: string[]) => {
-                        readonly "__#3@#constraints": string[];
+                        readonly "__#4@#constraints": string[];
                         toSql(queryGenerator: AbstractQueryGenerator): string;
                         toString(queryGenerator: AbstractQueryGenerator): void;
                     });
@@ -119,7 +119,7 @@ export declare class Deferrable {
                      */
                     readonly SET_IMMEDIATE: {
                         new (constraints: string[]): {
-                            readonly "__#4@#constraints": string[];
+                            readonly "__#5@#constraints": string[];
                             toSql(queryGenerator: AbstractQueryGenerator): string;
                             toString(queryGenerator: AbstractQueryGenerator): void;
                         };
@@ -145,22 +145,22 @@ export declare class Deferrable {
                          * transaction which sets the constraints to deferred.
                          */
                         readonly SET_DEFERRED: any & ((constraints: string[]) => {
-                            readonly "__#3@#constraints": string[];
-                            toSql(queryGenerator: AbstractQueryGenerator): string;
-                            toString(queryGenerator: AbstractQueryGenerator): void;
-                        });
-                        readonly SET_IMMEDIATE: any & ((constraints: string[]) => {
                             readonly "__#4@#constraints": string[];
                             toSql(queryGenerator: AbstractQueryGenerator): string;
                             toString(queryGenerator: AbstractQueryGenerator): void;
                         });
+                        readonly SET_IMMEDIATE: any & ((constraints: string[]) => {
+                            readonly "__#5@#constraints": string[];
+                            toSql(queryGenerator: AbstractQueryGenerator): string;
+                            toString(queryGenerator: AbstractQueryGenerator): void;
+                        });
                     } & ((constraints: string[]) => {
-                        readonly "__#4@#constraints": string[];
+                        readonly "__#5@#constraints": string[];
                         toSql(queryGenerator: AbstractQueryGenerator): string;
                         toString(queryGenerator: AbstractQueryGenerator): void;
                     });
                 } & ((constraints: string[]) => {
-                    readonly "__#3@#constraints": string[];
+                    readonly "__#4@#constraints": string[];
                     toSql(queryGenerator: AbstractQueryGenerator): string;
                     toString(queryGenerator: AbstractQueryGenerator): void;
                 });
@@ -170,7 +170,7 @@ export declare class Deferrable {
                  */
                 readonly SET_IMMEDIATE: {
                     new (constraints: string[]): {
-                        readonly "__#4@#constraints": string[];
+                        readonly "__#5@#constraints": string[];
                         toSql(queryGenerator: AbstractQueryGenerator): string;
                         toString(queryGenerator: AbstractQueryGenerator): void;
                     };
@@ -196,17 +196,17 @@ export declare class Deferrable {
                      * transaction which sets the constraints to deferred.
                      */
                     readonly SET_DEFERRED: any & ((constraints: string[]) => {
-                        readonly "__#3@#constraints": string[];
-                        toSql(queryGenerator: AbstractQueryGenerator): string;
-                        toString(queryGenerator: AbstractQueryGenerator): void;
-                    });
-                    readonly SET_IMMEDIATE: any & ((constraints: string[]) => {
                         readonly "__#4@#constraints": string[];
                         toSql(queryGenerator: AbstractQueryGenerator): string;
                         toString(queryGenerator: AbstractQueryGenerator): void;
                     });
+                    readonly SET_IMMEDIATE: any & ((constraints: string[]) => {
+                        readonly "__#5@#constraints": string[];
+                        toSql(queryGenerator: AbstractQueryGenerator): string;
+                        toString(queryGenerator: AbstractQueryGenerator): void;
+                    });
                 } & ((constraints: string[]) => {
-                    readonly "__#4@#constraints": string[];
+                    readonly "__#5@#constraints": string[];
                     toSql(queryGenerator: AbstractQueryGenerator): string;
                     toString(queryGenerator: AbstractQueryGenerator): void;
                 });
@@ -220,7 +220,7 @@ export declare class Deferrable {
              */
             readonly SET_DEFERRED: {
                 new (constraints: string[]): {
-                    readonly "__#3@#constraints": string[];
+                    readonly "__#4@#constraints": string[];
                     toSql(queryGenerator: AbstractQueryGenerator): string;
                     toString(queryGenerator: AbstractQueryGenerator): void;
                 };
@@ -242,7 +242,7 @@ export declare class Deferrable {
                     toString(queryGenerator: AbstractQueryGenerator): void;
                 });
                 readonly SET_DEFERRED: any & ((constraints: string[]) => {
-                    readonly "__#3@#constraints": string[];
+                    readonly "__#4@#constraints": string[];
                     toSql(queryGenerator: AbstractQueryGenerator): string;
                     toString(queryGenerator: AbstractQueryGenerator): void;
                 });
@@ -252,7 +252,7 @@ export declare class Deferrable {
                  */
                 readonly SET_IMMEDIATE: {
                     new (constraints: string[]): {
-                        readonly "__#4@#constraints": string[];
+                        readonly "__#5@#constraints": string[];
                         toSql(queryGenerator: AbstractQueryGenerator): string;
                         toString(queryGenerator: AbstractQueryGenerator): void;
                     };
@@ -278,22 +278,22 @@ export declare class Deferrable {
                      * transaction which sets the constraints to deferred.
                      */
                     readonly SET_DEFERRED: any & ((constraints: string[]) => {
-                        readonly "__#3@#constraints": string[];
-                        toSql(queryGenerator: AbstractQueryGenerator): string;
-                        toString(queryGenerator: AbstractQueryGenerator): void;
-                    });
-                    readonly SET_IMMEDIATE: any & ((constraints: string[]) => {
                         readonly "__#4@#constraints": string[];
                         toSql(queryGenerator: AbstractQueryGenerator): string;
                         toString(queryGenerator: AbstractQueryGenerator): void;
                     });
+                    readonly SET_IMMEDIATE: any & ((constraints: string[]) => {
+                        readonly "__#5@#constraints": string[];
+                        toSql(queryGenerator: AbstractQueryGenerator): string;
+                        toString(queryGenerator: AbstractQueryGenerator): void;
+                    });
                 } & ((constraints: string[]) => {
-                    readonly "__#4@#constraints": string[];
+                    readonly "__#5@#constraints": string[];
                     toSql(queryGenerator: AbstractQueryGenerator): string;
                     toString(queryGenerator: AbstractQueryGenerator): void;
                 });
             } & ((constraints: string[]) => {
-                readonly "__#3@#constraints": string[];
+                readonly "__#4@#constraints": string[];
                 toSql(queryGenerator: AbstractQueryGenerator): string;
                 toString(queryGenerator: AbstractQueryGenerator): void;
             });
@@ -303,7 +303,7 @@ export declare class Deferrable {
              */
             readonly SET_IMMEDIATE: {
                 new (constraints: string[]): {
-                    readonly "__#4@#constraints": string[];
+                    readonly "__#5@#constraints": string[];
                     toSql(queryGenerator: AbstractQueryGenerator): string;
                     toString(queryGenerator: AbstractQueryGenerator): void;
                 };
@@ -329,17 +329,17 @@ export declare class Deferrable {
                  * transaction which sets the constraints to deferred.
                  */
                 readonly SET_DEFERRED: any & ((constraints: string[]) => {
-                    readonly "__#3@#constraints": string[];
-                    toSql(queryGenerator: AbstractQueryGenerator): string;
-                    toString(queryGenerator: AbstractQueryGenerator): void;
-                });
-                readonly SET_IMMEDIATE: any & ((constraints: string[]) => {
                     readonly "__#4@#constraints": string[];
                     toSql(queryGenerator: AbstractQueryGenerator): string;
                     toString(queryGenerator: AbstractQueryGenerator): void;
                 });
+                readonly SET_IMMEDIATE: any & ((constraints: string[]) => {
+                    readonly "__#5@#constraints": string[];
+                    toSql(queryGenerator: AbstractQueryGenerator): string;
+                    toString(queryGenerator: AbstractQueryGenerator): void;
+                });
             } & ((constraints: string[]) => {
-                readonly "__#4@#constraints": string[];
+                readonly "__#5@#constraints": string[];
                 toSql(queryGenerator: AbstractQueryGenerator): string;
                 toString(queryGenerator: AbstractQueryGenerator): void;
             });
@@ -375,7 +375,7 @@ export declare class Deferrable {
              */
             readonly SET_DEFERRED: {
                 new (constraints: string[]): {
-                    readonly "__#3@#constraints": string[];
+                    readonly "__#4@#constraints": string[];
                     toSql(queryGenerator: AbstractQueryGenerator): string;
                     toString(queryGenerator: AbstractQueryGenerator): void;
                 };
@@ -397,7 +397,7 @@ export declare class Deferrable {
                     toString(queryGenerator: AbstractQueryGenerator): void;
                 });
                 readonly SET_DEFERRED: any & ((constraints: string[]) => {
-                    readonly "__#3@#constraints": string[];
+                    readonly "__#4@#constraints": string[];
                     toSql(queryGenerator: AbstractQueryGenerator): string;
                     toString(queryGenerator: AbstractQueryGenerator): void;
                 });
@@ -407,7 +407,7 @@ export declare class Deferrable {
                  */
                 readonly SET_IMMEDIATE: {
                     new (constraints: string[]): {
-                        readonly "__#4@#constraints": string[];
+                        readonly "__#5@#constraints": string[];
                         toSql(queryGenerator: AbstractQueryGenerator): string;
                         toString(queryGenerator: AbstractQueryGenerator): void;
                     };
@@ -433,22 +433,22 @@ export declare class Deferrable {
                      * transaction which sets the constraints to deferred.
                      */
                     readonly SET_DEFERRED: any & ((constraints: string[]) => {
-                        readonly "__#3@#constraints": string[];
-                        toSql(queryGenerator: AbstractQueryGenerator): string;
-                        toString(queryGenerator: AbstractQueryGenerator): void;
-                    });
-                    readonly SET_IMMEDIATE: any & ((constraints: string[]) => {
                         readonly "__#4@#constraints": string[];
                         toSql(queryGenerator: AbstractQueryGenerator): string;
                         toString(queryGenerator: AbstractQueryGenerator): void;
                     });
+                    readonly SET_IMMEDIATE: any & ((constraints: string[]) => {
+                        readonly "__#5@#constraints": string[];
+                        toSql(queryGenerator: AbstractQueryGenerator): string;
+                        toString(queryGenerator: AbstractQueryGenerator): void;
+                    });
                 } & ((constraints: string[]) => {
-                    readonly "__#4@#constraints": string[];
+                    readonly "__#5@#constraints": string[];
                     toSql(queryGenerator: AbstractQueryGenerator): string;
                     toString(queryGenerator: AbstractQueryGenerator): void;
                 });
             } & ((constraints: string[]) => {
-                readonly "__#3@#constraints": string[];
+                readonly "__#4@#constraints": string[];
                 toSql(queryGenerator: AbstractQueryGenerator): string;
                 toString(queryGenerator: AbstractQueryGenerator): void;
             });
@@ -458,7 +458,7 @@ export declare class Deferrable {
              */
             readonly SET_IMMEDIATE: {
                 new (constraints: string[]): {
-                    readonly "__#4@#constraints": string[];
+                    readonly "__#5@#constraints": string[];
                     toSql(queryGenerator: AbstractQueryGenerator): string;
                     toString(queryGenerator: AbstractQueryGenerator): void;
                 };
@@ -484,17 +484,17 @@ export declare class Deferrable {
                  * transaction which sets the constraints to deferred.
                  */
                 readonly SET_DEFERRED: any & ((constraints: string[]) => {
-                    readonly "__#3@#constraints": string[];
-                    toSql(queryGenerator: AbstractQueryGenerator): string;
-                    toString(queryGenerator: AbstractQueryGenerator): void;
-                });
-                readonly SET_IMMEDIATE: any & ((constraints: string[]) => {
                     readonly "__#4@#constraints": string[];
                     toSql(queryGenerator: AbstractQueryGenerator): string;
                     toString(queryGenerator: AbstractQueryGenerator): void;
                 });
+                readonly SET_IMMEDIATE: any & ((constraints: string[]) => {
+                    readonly "__#5@#constraints": string[];
+                    toSql(queryGenerator: AbstractQueryGenerator): string;
+                    toString(queryGenerator: AbstractQueryGenerator): void;
+                });
             } & ((constraints: string[]) => {
-                readonly "__#4@#constraints": string[];
+                readonly "__#5@#constraints": string[];
                 toSql(queryGenerator: AbstractQueryGenerator): string;
                 toString(queryGenerator: AbstractQueryGenerator): void;
             });
@@ -508,7 +508,7 @@ export declare class Deferrable {
          */
         readonly SET_DEFERRED: {
             new (constraints: string[]): {
-                readonly "__#3@#constraints": string[];
+                readonly "__#4@#constraints": string[];
                 toSql(queryGenerator: AbstractQueryGenerator): string;
                 toString(queryGenerator: AbstractQueryGenerator): void;
             };
@@ -530,7 +530,7 @@ export declare class Deferrable {
                 toString(queryGenerator: AbstractQueryGenerator): void;
             });
             readonly SET_DEFERRED: any & ((constraints: string[]) => {
-                readonly "__#3@#constraints": string[];
+                readonly "__#4@#constraints": string[];
                 toSql(queryGenerator: AbstractQueryGenerator): string;
                 toString(queryGenerator: AbstractQueryGenerator): void;
             });
@@ -540,7 +540,7 @@ export declare class Deferrable {
              */
             readonly SET_IMMEDIATE: {
                 new (constraints: string[]): {
-                    readonly "__#4@#constraints": string[];
+                    readonly "__#5@#constraints": string[];
                     toSql(queryGenerator: AbstractQueryGenerator): string;
                     toString(queryGenerator: AbstractQueryGenerator): void;
                 };
@@ -566,22 +566,22 @@ export declare class Deferrable {
                  * transaction which sets the constraints to deferred.
                  */
                 readonly SET_DEFERRED: any & ((constraints: string[]) => {
-                    readonly "__#3@#constraints": string[];
-                    toSql(queryGenerator: AbstractQueryGenerator): string;
-                    toString(queryGenerator: AbstractQueryGenerator): void;
-                });
-                readonly SET_IMMEDIATE: any & ((constraints: string[]) => {
                     readonly "__#4@#constraints": string[];
                     toSql(queryGenerator: AbstractQueryGenerator): string;
                     toString(queryGenerator: AbstractQueryGenerator): void;
                 });
+                readonly SET_IMMEDIATE: any & ((constraints: string[]) => {
+                    readonly "__#5@#constraints": string[];
+                    toSql(queryGenerator: AbstractQueryGenerator): string;
+                    toString(queryGenerator: AbstractQueryGenerator): void;
+                });
             } & ((constraints: string[]) => {
-                readonly "__#4@#constraints": string[];
+                readonly "__#5@#constraints": string[];
                 toSql(queryGenerator: AbstractQueryGenerator): string;
                 toString(queryGenerator: AbstractQueryGenerator): void;
             });
         } & ((constraints: string[]) => {
-            readonly "__#3@#constraints": string[];
+            readonly "__#4@#constraints": string[];
             toSql(queryGenerator: AbstractQueryGenerator): string;
             toString(queryGenerator: AbstractQueryGenerator): void;
         });
@@ -591,7 +591,7 @@ export declare class Deferrable {
          */
         readonly SET_IMMEDIATE: {
             new (constraints: string[]): {
-                readonly "__#4@#constraints": string[];
+                readonly "__#5@#constraints": string[];
                 toSql(queryGenerator: AbstractQueryGenerator): string;
                 toString(queryGenerator: AbstractQueryGenerator): void;
             };
@@ -617,17 +617,17 @@ export declare class Deferrable {
              * transaction which sets the constraints to deferred.
              */
             readonly SET_DEFERRED: any & ((constraints: string[]) => {
-                readonly "__#3@#constraints": string[];
-                toSql(queryGenerator: AbstractQueryGenerator): string;
-                toString(queryGenerator: AbstractQueryGenerator): void;
-            });
-            readonly SET_IMMEDIATE: any & ((constraints: string[]) => {
                 readonly "__#4@#constraints": string[];
                 toSql(queryGenerator: AbstractQueryGenerator): string;
                 toString(queryGenerator: AbstractQueryGenerator): void;
             });
+            readonly SET_IMMEDIATE: any & ((constraints: string[]) => {
+                readonly "__#5@#constraints": string[];
+                toSql(queryGenerator: AbstractQueryGenerator): string;
+                toString(queryGenerator: AbstractQueryGenerator): void;
+            });
         } & ((constraints: string[]) => {
-            readonly "__#4@#constraints": string[];
+            readonly "__#5@#constraints": string[];
             toSql(queryGenerator: AbstractQueryGenerator): string;
             toString(queryGenerator: AbstractQueryGenerator): void;
         });
@@ -683,7 +683,7 @@ export declare class Deferrable {
                  */
                 readonly SET_DEFERRED: {
                     new (constraints: string[]): {
-                        readonly "__#3@#constraints": string[];
+                        readonly "__#4@#constraints": string[];
                         toSql(queryGenerator: AbstractQueryGenerator): string;
                         toString(queryGenerator: AbstractQueryGenerator): void;
                     };
@@ -705,7 +705,7 @@ export declare class Deferrable {
                         toString(queryGenerator: AbstractQueryGenerator): void;
                     });
                     readonly SET_DEFERRED: any & ((constraints: string[]) => {
-                        readonly "__#3@#constraints": string[];
+                        readonly "__#4@#constraints": string[];
                         toSql(queryGenerator: AbstractQueryGenerator): string;
                         toString(queryGenerator: AbstractQueryGenerator): void;
                     });
@@ -715,7 +715,7 @@ export declare class Deferrable {
                      */
                     readonly SET_IMMEDIATE: {
                         new (constraints: string[]): {
-                            readonly "__#4@#constraints": string[];
+                            readonly "__#5@#constraints": string[];
                             toSql(queryGenerator: AbstractQueryGenerator): string;
                             toString(queryGenerator: AbstractQueryGenerator): void;
                         };
@@ -741,22 +741,22 @@ export declare class Deferrable {
                          * transaction which sets the constraints to deferred.
                          */
                         readonly SET_DEFERRED: any & ((constraints: string[]) => {
-                            readonly "__#3@#constraints": string[];
-                            toSql(queryGenerator: AbstractQueryGenerator): string;
-                            toString(queryGenerator: AbstractQueryGenerator): void;
-                        });
-                        readonly SET_IMMEDIATE: any & ((constraints: string[]) => {
                             readonly "__#4@#constraints": string[];
                             toSql(queryGenerator: AbstractQueryGenerator): string;
                             toString(queryGenerator: AbstractQueryGenerator): void;
                         });
+                        readonly SET_IMMEDIATE: any & ((constraints: string[]) => {
+                            readonly "__#5@#constraints": string[];
+                            toSql(queryGenerator: AbstractQueryGenerator): string;
+                            toString(queryGenerator: AbstractQueryGenerator): void;
+                        });
                     } & ((constraints: string[]) => {
-                        readonly "__#4@#constraints": string[];
+                        readonly "__#5@#constraints": string[];
                         toSql(queryGenerator: AbstractQueryGenerator): string;
                         toString(queryGenerator: AbstractQueryGenerator): void;
                     });
                 } & ((constraints: string[]) => {
-                    readonly "__#3@#constraints": string[];
+                    readonly "__#4@#constraints": string[];
                     toSql(queryGenerator: AbstractQueryGenerator): string;
                     toString(queryGenerator: AbstractQueryGenerator): void;
                 });
@@ -766,7 +766,7 @@ export declare class Deferrable {
                  */
                 readonly SET_IMMEDIATE: {
                     new (constraints: string[]): {
-                        readonly "__#4@#constraints": string[];
+                        readonly "__#5@#constraints": string[];
                         toSql(queryGenerator: AbstractQueryGenerator): string;
                         toString(queryGenerator: AbstractQueryGenerator): void;
                     };
@@ -792,17 +792,17 @@ export declare class Deferrable {
                      * transaction which sets the constraints to deferred.
                      */
                     readonly SET_DEFERRED: any & ((constraints: string[]) => {
-                        readonly "__#3@#constraints": string[];
-                        toSql(queryGenerator: AbstractQueryGenerator): string;
-                        toString(queryGenerator: AbstractQueryGenerator): void;
-                    });
-                    readonly SET_IMMEDIATE: any & ((constraints: string[]) => {
                         readonly "__#4@#constraints": string[];
                         toSql(queryGenerator: AbstractQueryGenerator): string;
                         toString(queryGenerator: AbstractQueryGenerator): void;
                     });
+                    readonly SET_IMMEDIATE: any & ((constraints: string[]) => {
+                        readonly "__#5@#constraints": string[];
+                        toSql(queryGenerator: AbstractQueryGenerator): string;
+                        toString(queryGenerator: AbstractQueryGenerator): void;
+                    });
                 } & ((constraints: string[]) => {
-                    readonly "__#4@#constraints": string[];
+                    readonly "__#5@#constraints": string[];
                     toSql(queryGenerator: AbstractQueryGenerator): string;
                     toString(queryGenerator: AbstractQueryGenerator): void;
                 });
@@ -816,7 +816,7 @@ export declare class Deferrable {
              */
             readonly SET_DEFERRED: {
                 new (constraints: string[]): {
-                    readonly "__#3@#constraints": string[];
+                    readonly "__#4@#constraints": string[];
                     toSql(queryGenerator: AbstractQueryGenerator): string;
                     toString(queryGenerator: AbstractQueryGenerator): void;
                 };
@@ -838,7 +838,7 @@ export declare class Deferrable {
                     toString(queryGenerator: AbstractQueryGenerator): void;
                 });
                 readonly SET_DEFERRED: any & ((constraints: string[]) => {
-                    readonly "__#3@#constraints": string[];
+                    readonly "__#4@#constraints": string[];
                     toSql(queryGenerator: AbstractQueryGenerator): string;
                     toString(queryGenerator: AbstractQueryGenerator): void;
                 });
@@ -848,7 +848,7 @@ export declare class Deferrable {
                  */
                 readonly SET_IMMEDIATE: {
                     new (constraints: string[]): {
-                        readonly "__#4@#constraints": string[];
+                        readonly "__#5@#constraints": string[];
                         toSql(queryGenerator: AbstractQueryGenerator): string;
                         toString(queryGenerator: AbstractQueryGenerator): void;
                     };
@@ -874,22 +874,22 @@ export declare class Deferrable {
                      * transaction which sets the constraints to deferred.
                      */
                     readonly SET_DEFERRED: any & ((constraints: string[]) => {
-                        readonly "__#3@#constraints": string[];
-                        toSql(queryGenerator: AbstractQueryGenerator): string;
-                        toString(queryGenerator: AbstractQueryGenerator): void;
-                    });
-                    readonly SET_IMMEDIATE: any & ((constraints: string[]) => {
                         readonly "__#4@#constraints": string[];
                         toSql(queryGenerator: AbstractQueryGenerator): string;
                         toString(queryGenerator: AbstractQueryGenerator): void;
                     });
+                    readonly SET_IMMEDIATE: any & ((constraints: string[]) => {
+                        readonly "__#5@#constraints": string[];
+                        toSql(queryGenerator: AbstractQueryGenerator): string;
+                        toString(queryGenerator: AbstractQueryGenerator): void;
+                    });
                 } & ((constraints: string[]) => {
-                    readonly "__#4@#constraints": string[];
+                    readonly "__#5@#constraints": string[];
                     toSql(queryGenerator: AbstractQueryGenerator): string;
                     toString(queryGenerator: AbstractQueryGenerator): void;
                 });
             } & ((constraints: string[]) => {
-                readonly "__#3@#constraints": string[];
+                readonly "__#4@#constraints": string[];
                 toSql(queryGenerator: AbstractQueryGenerator): string;
                 toString(queryGenerator: AbstractQueryGenerator): void;
             });
@@ -899,7 +899,7 @@ export declare class Deferrable {
              */
             readonly SET_IMMEDIATE: {
                 new (constraints: string[]): {
-                    readonly "__#4@#constraints": string[];
+                    readonly "__#5@#constraints": string[];
                     toSql(queryGenerator: AbstractQueryGenerator): string;
                     toString(queryGenerator: AbstractQueryGenerator): void;
                 };
@@ -925,17 +925,17 @@ export declare class Deferrable {
                  * transaction which sets the constraints to deferred.
                  */
                 readonly SET_DEFERRED: any & ((constraints: string[]) => {
-                    readonly "__#3@#constraints": string[];
-                    toSql(queryGenerator: AbstractQueryGenerator): string;
-                    toString(queryGenerator: AbstractQueryGenerator): void;
-                });
-                readonly SET_IMMEDIATE: any & ((constraints: string[]) => {
                     readonly "__#4@#constraints": string[];
                     toSql(queryGenerator: AbstractQueryGenerator): string;
                     toString(queryGenerator: AbstractQueryGenerator): void;
                 });
+                readonly SET_IMMEDIATE: any & ((constraints: string[]) => {
+                    readonly "__#5@#constraints": string[];
+                    toSql(queryGenerator: AbstractQueryGenerator): string;
+                    toString(queryGenerator: AbstractQueryGenerator): void;
+                });
             } & ((constraints: string[]) => {
-                readonly "__#4@#constraints": string[];
+                readonly "__#5@#constraints": string[];
                 toSql(queryGenerator: AbstractQueryGenerator): string;
                 toString(queryGenerator: AbstractQueryGenerator): void;
             });
@@ -975,7 +975,7 @@ export declare class Deferrable {
              */
             readonly SET_DEFERRED: {
                 new (constraints: string[]): {
-                    readonly "__#3@#constraints": string[];
+                    readonly "__#4@#constraints": string[];
                     toSql(queryGenerator: AbstractQueryGenerator): string;
                     toString(queryGenerator: AbstractQueryGenerator): void;
                 };
@@ -997,7 +997,7 @@ export declare class Deferrable {
                     toString(queryGenerator: AbstractQueryGenerator): void;
                 });
                 readonly SET_DEFERRED: any & ((constraints: string[]) => {
-                    readonly "__#3@#constraints": string[];
+                    readonly "__#4@#constraints": string[];
                     toSql(queryGenerator: AbstractQueryGenerator): string;
                     toString(queryGenerator: AbstractQueryGenerator): void;
                 });
@@ -1007,7 +1007,7 @@ export declare class Deferrable {
                  */
                 readonly SET_IMMEDIATE: {
                     new (constraints: string[]): {
-                        readonly "__#4@#constraints": string[];
+                        readonly "__#5@#constraints": string[];
                         toSql(queryGenerator: AbstractQueryGenerator): string;
                         toString(queryGenerator: AbstractQueryGenerator): void;
                     };
@@ -1033,22 +1033,22 @@ export declare class Deferrable {
                      * transaction which sets the constraints to deferred.
                      */
                     readonly SET_DEFERRED: any & ((constraints: string[]) => {
-                        readonly "__#3@#constraints": string[];
-                        toSql(queryGenerator: AbstractQueryGenerator): string;
-                        toString(queryGenerator: AbstractQueryGenerator): void;
-                    });
-                    readonly SET_IMMEDIATE: any & ((constraints: string[]) => {
                         readonly "__#4@#constraints": string[];
                         toSql(queryGenerator: AbstractQueryGenerator): string;
                         toString(queryGenerator: AbstractQueryGenerator): void;
                     });
+                    readonly SET_IMMEDIATE: any & ((constraints: string[]) => {
+                        readonly "__#5@#constraints": string[];
+                        toSql(queryGenerator: AbstractQueryGenerator): string;
+                        toString(queryGenerator: AbstractQueryGenerator): void;
+                    });
                 } & ((constraints: string[]) => {
-                    readonly "__#4@#constraints": string[];
+                    readonly "__#5@#constraints": string[];
                     toSql(queryGenerator: AbstractQueryGenerator): string;
                     toString(queryGenerator: AbstractQueryGenerator): void;
                 });
             } & ((constraints: string[]) => {
-                readonly "__#3@#constraints": string[];
+                readonly "__#4@#constraints": string[];
                 toSql(queryGenerator: AbstractQueryGenerator): string;
                 toString(queryGenerator: AbstractQueryGenerator): void;
             });
@@ -1058,7 +1058,7 @@ export declare class Deferrable {
              */
             readonly SET_IMMEDIATE: {
                 new (constraints: string[]): {
-                    readonly "__#4@#constraints": string[];
+                    readonly "__#5@#constraints": string[];
                     toSql(queryGenerator: AbstractQueryGenerator): string;
                     toString(queryGenerator: AbstractQueryGenerator): void;
                 };
@@ -1084,17 +1084,17 @@ export declare class Deferrable {
                  * transaction which sets the constraints to deferred.
                  */
                 readonly SET_DEFERRED: any & ((constraints: string[]) => {
-                    readonly "__#3@#constraints": string[];
-                    toSql(queryGenerator: AbstractQueryGenerator): string;
-                    toString(queryGenerator: AbstractQueryGenerator): void;
-                });
-                readonly SET_IMMEDIATE: any & ((constraints: string[]) => {
                     readonly "__#4@#constraints": string[];
                     toSql(queryGenerator: AbstractQueryGenerator): string;
                     toString(queryGenerator: AbstractQueryGenerator): void;
                 });
+                readonly SET_IMMEDIATE: any & ((constraints: string[]) => {
+                    readonly "__#5@#constraints": string[];
+                    toSql(queryGenerator: AbstractQueryGenerator): string;
+                    toString(queryGenerator: AbstractQueryGenerator): void;
+                });
             } & ((constraints: string[]) => {
-                readonly "__#4@#constraints": string[];
+                readonly "__#5@#constraints": string[];
                 toSql(queryGenerator: AbstractQueryGenerator): string;
                 toString(queryGenerator: AbstractQueryGenerator): void;
             });
@@ -1108,7 +1108,7 @@ export declare class Deferrable {
          */
         readonly SET_DEFERRED: {
             new (constraints: string[]): {
-                readonly "__#3@#constraints": string[];
+                readonly "__#4@#constraints": string[];
                 toSql(queryGenerator: AbstractQueryGenerator): string;
                 toString(queryGenerator: AbstractQueryGenerator): void;
             };
@@ -1130,7 +1130,7 @@ export declare class Deferrable {
                 toString(queryGenerator: AbstractQueryGenerator): void;
             });
             readonly SET_DEFERRED: any & ((constraints: string[]) => {
-                readonly "__#3@#constraints": string[];
+                readonly "__#4@#constraints": string[];
                 toSql(queryGenerator: AbstractQueryGenerator): string;
                 toString(queryGenerator: AbstractQueryGenerator): void;
             });
@@ -1140,7 +1140,7 @@ export declare class Deferrable {
              */
             readonly SET_IMMEDIATE: {
                 new (constraints: string[]): {
-                    readonly "__#4@#constraints": string[];
+                    readonly "__#5@#constraints": string[];
                     toSql(queryGenerator: AbstractQueryGenerator): string;
                     toString(queryGenerator: AbstractQueryGenerator): void;
                 };
@@ -1166,22 +1166,22 @@ export declare class Deferrable {
                  * transaction which sets the constraints to deferred.
                  */
                 readonly SET_DEFERRED: any & ((constraints: string[]) => {
-                    readonly "__#3@#constraints": string[];
-                    toSql(queryGenerator: AbstractQueryGenerator): string;
-                    toString(queryGenerator: AbstractQueryGenerator): void;
-                });
-                readonly SET_IMMEDIATE: any & ((constraints: string[]) => {
                     readonly "__#4@#constraints": string[];
                     toSql(queryGenerator: AbstractQueryGenerator): string;
                     toString(queryGenerator: AbstractQueryGenerator): void;
                 });
+                readonly SET_IMMEDIATE: any & ((constraints: string[]) => {
+                    readonly "__#5@#constraints": string[];
+                    toSql(queryGenerator: AbstractQueryGenerator): string;
+                    toString(queryGenerator: AbstractQueryGenerator): void;
+                });
             } & ((constraints: string[]) => {
-                readonly "__#4@#constraints": string[];
+                readonly "__#5@#constraints": string[];
                 toSql(queryGenerator: AbstractQueryGenerator): string;
                 toString(queryGenerator: AbstractQueryGenerator): void;
             });
         } & ((constraints: string[]) => {
-            readonly "__#3@#constraints": string[];
+            readonly "__#4@#constraints": string[];
             toSql(queryGenerator: AbstractQueryGenerator): string;
             toString(queryGenerator: AbstractQueryGenerator): void;
         });
@@ -1191,7 +1191,7 @@ export declare class Deferrable {
          */
         readonly SET_IMMEDIATE: {
             new (constraints: string[]): {
-                readonly "__#4@#constraints": string[];
+                readonly "__#5@#constraints": string[];
                 toSql(queryGenerator: AbstractQueryGenerator): string;
                 toString(queryGenerator: AbstractQueryGenerator): void;
             };
@@ -1217,17 +1217,17 @@ export declare class Deferrable {
              * transaction which sets the constraints to deferred.
              */
             readonly SET_DEFERRED: any & ((constraints: string[]) => {
-                readonly "__#3@#constraints": string[];
-                toSql(queryGenerator: AbstractQueryGenerator): string;
-                toString(queryGenerator: AbstractQueryGenerator): void;
-            });
-            readonly SET_IMMEDIATE: any & ((constraints: string[]) => {
                 readonly "__#4@#constraints": string[];
                 toSql(queryGenerator: AbstractQueryGenerator): string;
                 toString(queryGenerator: AbstractQueryGenerator): void;
             });
+            readonly SET_IMMEDIATE: any & ((constraints: string[]) => {
+                readonly "__#5@#constraints": string[];
+                toSql(queryGenerator: AbstractQueryGenerator): string;
+                toString(queryGenerator: AbstractQueryGenerator): void;
+            });
         } & ((constraints: string[]) => {
-            readonly "__#4@#constraints": string[];
+            readonly "__#5@#constraints": string[];
             toSql(queryGenerator: AbstractQueryGenerator): string;
             toString(queryGenerator: AbstractQueryGenerator): void;
         });
@@ -1287,7 +1287,7 @@ export declare class Deferrable {
                  */
                 readonly SET_DEFERRED: {
                     new (constraints: string[]): {
-                        readonly "__#3@#constraints": string[];
+                        readonly "__#4@#constraints": string[];
                         toSql(queryGenerator: AbstractQueryGenerator): string;
                         toString(queryGenerator: AbstractQueryGenerator): void;
                     };
@@ -1309,7 +1309,7 @@ export declare class Deferrable {
                         toString(queryGenerator: AbstractQueryGenerator): void;
                     });
                     readonly SET_DEFERRED: any & ((constraints: string[]) => {
-                        readonly "__#3@#constraints": string[];
+                        readonly "__#4@#constraints": string[];
                         toSql(queryGenerator: AbstractQueryGenerator): string;
                         toString(queryGenerator: AbstractQueryGenerator): void;
                     });
@@ -1319,7 +1319,7 @@ export declare class Deferrable {
                      */
                     readonly SET_IMMEDIATE: {
                         new (constraints: string[]): {
-                            readonly "__#4@#constraints": string[];
+                            readonly "__#5@#constraints": string[];
                             toSql(queryGenerator: AbstractQueryGenerator): string;
                             toString(queryGenerator: AbstractQueryGenerator): void;
                         };
@@ -1345,22 +1345,22 @@ export declare class Deferrable {
                          * transaction which sets the constraints to deferred.
                          */
                         readonly SET_DEFERRED: any & ((constraints: string[]) => {
-                            readonly "__#3@#constraints": string[];
-                            toSql(queryGenerator: AbstractQueryGenerator): string;
-                            toString(queryGenerator: AbstractQueryGenerator): void;
-                        });
-                        readonly SET_IMMEDIATE: any & ((constraints: string[]) => {
                             readonly "__#4@#constraints": string[];
                             toSql(queryGenerator: AbstractQueryGenerator): string;
                             toString(queryGenerator: AbstractQueryGenerator): void;
                         });
+                        readonly SET_IMMEDIATE: any & ((constraints: string[]) => {
+                            readonly "__#5@#constraints": string[];
+                            toSql(queryGenerator: AbstractQueryGenerator): string;
+                            toString(queryGenerator: AbstractQueryGenerator): void;
+                        });
                     } & ((constraints: string[]) => {
-                        readonly "__#4@#constraints": string[];
+                        readonly "__#5@#constraints": string[];
                         toSql(queryGenerator: AbstractQueryGenerator): string;
                         toString(queryGenerator: AbstractQueryGenerator): void;
                     });
                 } & ((constraints: string[]) => {
-                    readonly "__#3@#constraints": string[];
+                    readonly "__#4@#constraints": string[];
                     toSql(queryGenerator: AbstractQueryGenerator): string;
                     toString(queryGenerator: AbstractQueryGenerator): void;
                 });
@@ -1370,7 +1370,7 @@ export declare class Deferrable {
                  */
                 readonly SET_IMMEDIATE: {
                     new (constraints: string[]): {
-                        readonly "__#4@#constraints": string[];
+                        readonly "__#5@#constraints": string[];
                         toSql(queryGenerator: AbstractQueryGenerator): string;
                         toString(queryGenerator: AbstractQueryGenerator): void;
                     };
@@ -1396,17 +1396,17 @@ export declare class Deferrable {
                      * transaction which sets the constraints to deferred.
                      */
                     readonly SET_DEFERRED: any & ((constraints: string[]) => {
-                        readonly "__#3@#constraints": string[];
-                        toSql(queryGenerator: AbstractQueryGenerator): string;
-                        toString(queryGenerator: AbstractQueryGenerator): void;
-                    });
-                    readonly SET_IMMEDIATE: any & ((constraints: string[]) => {
                         readonly "__#4@#constraints": string[];
                         toSql(queryGenerator: AbstractQueryGenerator): string;
                         toString(queryGenerator: AbstractQueryGenerator): void;
                     });
+                    readonly SET_IMMEDIATE: any & ((constraints: string[]) => {
+                        readonly "__#5@#constraints": string[];
+                        toSql(queryGenerator: AbstractQueryGenerator): string;
+                        toString(queryGenerator: AbstractQueryGenerator): void;
+                    });
                 } & ((constraints: string[]) => {
-                    readonly "__#4@#constraints": string[];
+                    readonly "__#5@#constraints": string[];
                     toSql(queryGenerator: AbstractQueryGenerator): string;
                     toString(queryGenerator: AbstractQueryGenerator): void;
                 });
@@ -1420,7 +1420,7 @@ export declare class Deferrable {
              */
             readonly SET_DEFERRED: {
                 new (constraints: string[]): {
-                    readonly "__#3@#constraints": string[];
+                    readonly "__#4@#constraints": string[];
                     toSql(queryGenerator: AbstractQueryGenerator): string;
                     toString(queryGenerator: AbstractQueryGenerator): void;
                 };
@@ -1442,7 +1442,7 @@ export declare class Deferrable {
                     toString(queryGenerator: AbstractQueryGenerator): void;
                 });
                 readonly SET_DEFERRED: any & ((constraints: string[]) => {
-                    readonly "__#3@#constraints": string[];
+                    readonly "__#4@#constraints": string[];
                     toSql(queryGenerator: AbstractQueryGenerator): string;
                     toString(queryGenerator: AbstractQueryGenerator): void;
                 });
@@ -1452,7 +1452,7 @@ export declare class Deferrable {
                  */
                 readonly SET_IMMEDIATE: {
                     new (constraints: string[]): {
-                        readonly "__#4@#constraints": string[];
+                        readonly "__#5@#constraints": string[];
                         toSql(queryGenerator: AbstractQueryGenerator): string;
                         toString(queryGenerator: AbstractQueryGenerator): void;
                     };
@@ -1478,22 +1478,22 @@ export declare class Deferrable {
                      * transaction which sets the constraints to deferred.
                      */
                     readonly SET_DEFERRED: any & ((constraints: string[]) => {
-                        readonly "__#3@#constraints": string[];
-                        toSql(queryGenerator: AbstractQueryGenerator): string;
-                        toString(queryGenerator: AbstractQueryGenerator): void;
-                    });
-                    readonly SET_IMMEDIATE: any & ((constraints: string[]) => {
                         readonly "__#4@#constraints": string[];
                         toSql(queryGenerator: AbstractQueryGenerator): string;
                         toString(queryGenerator: AbstractQueryGenerator): void;
                     });
+                    readonly SET_IMMEDIATE: any & ((constraints: string[]) => {
+                        readonly "__#5@#constraints": string[];
+                        toSql(queryGenerator: AbstractQueryGenerator): string;
+                        toString(queryGenerator: AbstractQueryGenerator): void;
+                    });
                 } & ((constraints: string[]) => {
-                    readonly "__#4@#constraints": string[];
+                    readonly "__#5@#constraints": string[];
                     toSql(queryGenerator: AbstractQueryGenerator): string;
                     toString(queryGenerator: AbstractQueryGenerator): void;
                 });
             } & ((constraints: string[]) => {
-                readonly "__#3@#constraints": string[];
+                readonly "__#4@#constraints": string[];
                 toSql(queryGenerator: AbstractQueryGenerator): string;
                 toString(queryGenerator: AbstractQueryGenerator): void;
             });
@@ -1503,7 +1503,7 @@ export declare class Deferrable {
              */
             readonly SET_IMMEDIATE: {
                 new (constraints: string[]): {
-                    readonly "__#4@#constraints": string[];
+                    readonly "__#5@#constraints": string[];
                     toSql(queryGenerator: AbstractQueryGenerator): string;
                     toString(queryGenerator: AbstractQueryGenerator): void;
                 };
@@ -1529,17 +1529,17 @@ export declare class Deferrable {
                  * transaction which sets the constraints to deferred.
                  */
                 readonly SET_DEFERRED: any & ((constraints: string[]) => {
-                    readonly "__#3@#constraints": string[];
-                    toSql(queryGenerator: AbstractQueryGenerator): string;
-                    toString(queryGenerator: AbstractQueryGenerator): void;
-                });
-                readonly SET_IMMEDIATE: any & ((constraints: string[]) => {
                     readonly "__#4@#constraints": string[];
                     toSql(queryGenerator: AbstractQueryGenerator): string;
                     toString(queryGenerator: AbstractQueryGenerator): void;
                 });
+                readonly SET_IMMEDIATE: any & ((constraints: string[]) => {
+                    readonly "__#5@#constraints": string[];
+                    toSql(queryGenerator: AbstractQueryGenerator): string;
+                    toString(queryGenerator: AbstractQueryGenerator): void;
+                });
             } & ((constraints: string[]) => {
-                readonly "__#4@#constraints": string[];
+                readonly "__#5@#constraints": string[];
                 toSql(queryGenerator: AbstractQueryGenerator): string;
                 toString(queryGenerator: AbstractQueryGenerator): void;
             });
@@ -1589,7 +1589,7 @@ export declare class Deferrable {
                  */
                 readonly SET_DEFERRED: {
                     new (constraints: string[]): {
-                        readonly "__#3@#constraints": string[];
+                        readonly "__#4@#constraints": string[];
                         toSql(queryGenerator: AbstractQueryGenerator): string;
                         toString(queryGenerator: AbstractQueryGenerator): void;
                     };
@@ -1611,7 +1611,7 @@ export declare class Deferrable {
                         toString(queryGenerator: AbstractQueryGenerator): void;
                     });
                     readonly SET_DEFERRED: any & ((constraints: string[]) => {
-                        readonly "__#3@#constraints": string[];
+                        readonly "__#4@#constraints": string[];
                         toSql(queryGenerator: AbstractQueryGenerator): string;
                         toString(queryGenerator: AbstractQueryGenerator): void;
                     });
@@ -1621,7 +1621,7 @@ export declare class Deferrable {
                      */
                     readonly SET_IMMEDIATE: {
                         new (constraints: string[]): {
-                            readonly "__#4@#constraints": string[];
+                            readonly "__#5@#constraints": string[];
                             toSql(queryGenerator: AbstractQueryGenerator): string;
                             toString(queryGenerator: AbstractQueryGenerator): void;
                         };
@@ -1647,22 +1647,22 @@ export declare class Deferrable {
                          * transaction which sets the constraints to deferred.
                          */
                         readonly SET_DEFERRED: any & ((constraints: string[]) => {
-                            readonly "__#3@#constraints": string[];
-                            toSql(queryGenerator: AbstractQueryGenerator): string;
-                            toString(queryGenerator: AbstractQueryGenerator): void;
-                        });
-                        readonly SET_IMMEDIATE: any & ((constraints: string[]) => {
                             readonly "__#4@#constraints": string[];
                             toSql(queryGenerator: AbstractQueryGenerator): string;
                             toString(queryGenerator: AbstractQueryGenerator): void;
                         });
+                        readonly SET_IMMEDIATE: any & ((constraints: string[]) => {
+                            readonly "__#5@#constraints": string[];
+                            toSql(queryGenerator: AbstractQueryGenerator): string;
+                            toString(queryGenerator: AbstractQueryGenerator): void;
+                        });
                     } & ((constraints: string[]) => {
-                        readonly "__#4@#constraints": string[];
+                        readonly "__#5@#constraints": string[];
                         toSql(queryGenerator: AbstractQueryGenerator): string;
                         toString(queryGenerator: AbstractQueryGenerator): void;
                     });
                 } & ((constraints: string[]) => {
-                    readonly "__#3@#constraints": string[];
+                    readonly "__#4@#constraints": string[];
                     toSql(queryGenerator: AbstractQueryGenerator): string;
                     toString(queryGenerator: AbstractQueryGenerator): void;
                 });
@@ -1672,7 +1672,7 @@ export declare class Deferrable {
                  */
                 readonly SET_IMMEDIATE: {
                     new (constraints: string[]): {
-                        readonly "__#4@#constraints": string[];
+                        readonly "__#5@#constraints": string[];
                         toSql(queryGenerator: AbstractQueryGenerator): string;
                         toString(queryGenerator: AbstractQueryGenerator): void;
                     };
@@ -1698,17 +1698,17 @@ export declare class Deferrable {
                      * transaction which sets the constraints to deferred.
                      */
                     readonly SET_DEFERRED: any & ((constraints: string[]) => {
-                        readonly "__#3@#constraints": string[];
-                        toSql(queryGenerator: AbstractQueryGenerator): string;
-                        toString(queryGenerator: AbstractQueryGenerator): void;
-                    });
-                    readonly SET_IMMEDIATE: any & ((constraints: string[]) => {
                         readonly "__#4@#constraints": string[];
                         toSql(queryGenerator: AbstractQueryGenerator): string;
                         toString(queryGenerator: AbstractQueryGenerator): void;
                     });
+                    readonly SET_IMMEDIATE: any & ((constraints: string[]) => {
+                        readonly "__#5@#constraints": string[];
+                        toSql(queryGenerator: AbstractQueryGenerator): string;
+                        toString(queryGenerator: AbstractQueryGenerator): void;
+                    });
                 } & ((constraints: string[]) => {
-                    readonly "__#4@#constraints": string[];
+                    readonly "__#5@#constraints": string[];
                     toSql(queryGenerator: AbstractQueryGenerator): string;
                     toString(queryGenerator: AbstractQueryGenerator): void;
                 });
@@ -1722,7 +1722,7 @@ export declare class Deferrable {
              */
             readonly SET_DEFERRED: {
                 new (constraints: string[]): {
-                    readonly "__#3@#constraints": string[];
+                    readonly "__#4@#constraints": string[];
                     toSql(queryGenerator: AbstractQueryGenerator): string;
                     toString(queryGenerator: AbstractQueryGenerator): void;
                 };
@@ -1744,7 +1744,7 @@ export declare class Deferrable {
                     toString(queryGenerator: AbstractQueryGenerator): void;
                 });
                 readonly SET_DEFERRED: any & ((constraints: string[]) => {
-                    readonly "__#3@#constraints": string[];
+                    readonly "__#4@#constraints": string[];
                     toSql(queryGenerator: AbstractQueryGenerator): string;
                     toString(queryGenerator: AbstractQueryGenerator): void;
                 });
@@ -1754,7 +1754,7 @@ export declare class Deferrable {
                  */
                 readonly SET_IMMEDIATE: {
                     new (constraints: string[]): {
-                        readonly "__#4@#constraints": string[];
+                        readonly "__#5@#constraints": string[];
                         toSql(queryGenerator: AbstractQueryGenerator): string;
                         toString(queryGenerator: AbstractQueryGenerator): void;
                     };
@@ -1780,22 +1780,22 @@ export declare class Deferrable {
                      * transaction which sets the constraints to deferred.
                      */
                     readonly SET_DEFERRED: any & ((constraints: string[]) => {
-                        readonly "__#3@#constraints": string[];
-                        toSql(queryGenerator: AbstractQueryGenerator): string;
-                        toString(queryGenerator: AbstractQueryGenerator): void;
-                    });
-                    readonly SET_IMMEDIATE: any & ((constraints: string[]) => {
                         readonly "__#4@#constraints": string[];
                         toSql(queryGenerator: AbstractQueryGenerator): string;
                         toString(queryGenerator: AbstractQueryGenerator): void;
                     });
+                    readonly SET_IMMEDIATE: any & ((constraints: string[]) => {
+                        readonly "__#5@#constraints": string[];
+                        toSql(queryGenerator: AbstractQueryGenerator): string;
+                        toString(queryGenerator: AbstractQueryGenerator): void;
+                    });
                 } & ((constraints: string[]) => {
-                    readonly "__#4@#constraints": string[];
+                    readonly "__#5@#constraints": string[];
                     toSql(queryGenerator: AbstractQueryGenerator): string;
                     toString(queryGenerator: AbstractQueryGenerator): void;
                 });
             } & ((constraints: string[]) => {
-                readonly "__#3@#constraints": string[];
+                readonly "__#4@#constraints": string[];
                 toSql(queryGenerator: AbstractQueryGenerator): string;
                 toString(queryGenerator: AbstractQueryGenerator): void;
             });
@@ -1805,7 +1805,7 @@ export declare class Deferrable {
              */
             readonly SET_IMMEDIATE: {
                 new (constraints: string[]): {
-                    readonly "__#4@#constraints": string[];
+                    readonly "__#5@#constraints": string[];
                     toSql(queryGenerator: AbstractQueryGenerator): string;
                     toString(queryGenerator: AbstractQueryGenerator): void;
                 };
@@ -1831,17 +1831,17 @@ export declare class Deferrable {
                  * transaction which sets the constraints to deferred.
                  */
                 readonly SET_DEFERRED: any & ((constraints: string[]) => {
-                    readonly "__#3@#constraints": string[];
-                    toSql(queryGenerator: AbstractQueryGenerator): string;
-                    toString(queryGenerator: AbstractQueryGenerator): void;
-                });
-                readonly SET_IMMEDIATE: any & ((constraints: string[]) => {
                     readonly "__#4@#constraints": string[];
                     toSql(queryGenerator: AbstractQueryGenerator): string;
                     toString(queryGenerator: AbstractQueryGenerator): void;
                 });
+                readonly SET_IMMEDIATE: any & ((constraints: string[]) => {
+                    readonly "__#5@#constraints": string[];
+                    toSql(queryGenerator: AbstractQueryGenerator): string;
+                    toString(queryGenerator: AbstractQueryGenerator): void;
+                });
             } & ((constraints: string[]) => {
-                readonly "__#4@#constraints": string[];
+                readonly "__#5@#constraints": string[];
                 toSql(queryGenerator: AbstractQueryGenerator): string;
                 toString(queryGenerator: AbstractQueryGenerator): void;
             });
@@ -1859,7 +1859,7 @@ export declare class Deferrable {
          */
         readonly SET_DEFERRED: {
             new (constraints: string[]): {
-                readonly "__#3@#constraints": string[];
+                readonly "__#4@#constraints": string[];
                 toSql(queryGenerator: AbstractQueryGenerator): string;
                 toString(queryGenerator: AbstractQueryGenerator): void;
             };
@@ -1881,7 +1881,7 @@ export declare class Deferrable {
                 toString(queryGenerator: AbstractQueryGenerator): void;
             });
             readonly SET_DEFERRED: any & ((constraints: string[]) => {
-                readonly "__#3@#constraints": string[];
+                readonly "__#4@#constraints": string[];
                 toSql(queryGenerator: AbstractQueryGenerator): string;
                 toString(queryGenerator: AbstractQueryGenerator): void;
             });
@@ -1891,7 +1891,7 @@ export declare class Deferrable {
              */
             readonly SET_IMMEDIATE: {
                 new (constraints: string[]): {
-                    readonly "__#4@#constraints": string[];
+                    readonly "__#5@#constraints": string[];
                     toSql(queryGenerator: AbstractQueryGenerator): string;
                     toString(queryGenerator: AbstractQueryGenerator): void;
                 };
@@ -1917,22 +1917,22 @@ export declare class Deferrable {
                  * transaction which sets the constraints to deferred.
                  */
                 readonly SET_DEFERRED: any & ((constraints: string[]) => {
-                    readonly "__#3@#constraints": string[];
-                    toSql(queryGenerator: AbstractQueryGenerator): string;
-                    toString(queryGenerator: AbstractQueryGenerator): void;
-                });
-                readonly SET_IMMEDIATE: any & ((constraints: string[]) => {
                     readonly "__#4@#constraints": string[];
                     toSql(queryGenerator: AbstractQueryGenerator): string;
                     toString(queryGenerator: AbstractQueryGenerator): void;
                 });
+                readonly SET_IMMEDIATE: any & ((constraints: string[]) => {
+                    readonly "__#5@#constraints": string[];
+                    toSql(queryGenerator: AbstractQueryGenerator): string;
+                    toString(queryGenerator: AbstractQueryGenerator): void;
+                });
             } & ((constraints: string[]) => {
-                readonly "__#4@#constraints": string[];
+                readonly "__#5@#constraints": string[];
                 toSql(queryGenerator: AbstractQueryGenerator): string;
                 toString(queryGenerator: AbstractQueryGenerator): void;
             });
         } & ((constraints: string[]) => {
-            readonly "__#3@#constraints": string[];
+            readonly "__#4@#constraints": string[];
             toSql(queryGenerator: AbstractQueryGenerator): string;
             toString(queryGenerator: AbstractQueryGenerator): void;
         });
@@ -1942,7 +1942,7 @@ export declare class Deferrable {
          */
         readonly SET_IMMEDIATE: {
             new (constraints: string[]): {
-                readonly "__#4@#constraints": string[];
+                readonly "__#5@#constraints": string[];
                 toSql(queryGenerator: AbstractQueryGenerator): string;
                 toString(queryGenerator: AbstractQueryGenerator): void;
             };
@@ -1968,17 +1968,17 @@ export declare class Deferrable {
              * transaction which sets the constraints to deferred.
              */
             readonly SET_DEFERRED: any & ((constraints: string[]) => {
-                readonly "__#3@#constraints": string[];
-                toSql(queryGenerator: AbstractQueryGenerator): string;
-                toString(queryGenerator: AbstractQueryGenerator): void;
-            });
-            readonly SET_IMMEDIATE: any & ((constraints: string[]) => {
                 readonly "__#4@#constraints": string[];
                 toSql(queryGenerator: AbstractQueryGenerator): string;
                 toString(queryGenerator: AbstractQueryGenerator): void;
             });
+            readonly SET_IMMEDIATE: any & ((constraints: string[]) => {
+                readonly "__#5@#constraints": string[];
+                toSql(queryGenerator: AbstractQueryGenerator): string;
+                toString(queryGenerator: AbstractQueryGenerator): void;
+            });
         } & ((constraints: string[]) => {
-            readonly "__#4@#constraints": string[];
+            readonly "__#5@#constraints": string[];
             toSql(queryGenerator: AbstractQueryGenerator): string;
             toString(queryGenerator: AbstractQueryGenerator): void;
         });
@@ -1992,7 +1992,7 @@ export declare class Deferrable {
      */
     static readonly SET_DEFERRED: {
         new (constraints: string[]): {
-            readonly "__#3@#constraints": string[];
+            readonly "__#4@#constraints": string[];
             toSql(queryGenerator: AbstractQueryGenerator): string;
             toString(queryGenerator: AbstractQueryGenerator): void;
         };
@@ -2039,7 +2039,7 @@ export declare class Deferrable {
                  */
                 readonly SET_DEFERRED: {
                     new (constraints: string[]): {
-                        readonly "__#3@#constraints": string[];
+                        readonly "__#4@#constraints": string[];
                         toSql(queryGenerator: AbstractQueryGenerator): string;
                         toString(queryGenerator: AbstractQueryGenerator): void;
                     };
@@ -2061,7 +2061,7 @@ export declare class Deferrable {
                         toString(queryGenerator: AbstractQueryGenerator): void;
                     });
                     readonly SET_DEFERRED: any & ((constraints: string[]) => {
-                        readonly "__#3@#constraints": string[];
+                        readonly "__#4@#constraints": string[];
                         toSql(queryGenerator: AbstractQueryGenerator): string;
                         toString(queryGenerator: AbstractQueryGenerator): void;
                     });
@@ -2071,7 +2071,7 @@ export declare class Deferrable {
                      */
                     readonly SET_IMMEDIATE: {
                         new (constraints: string[]): {
-                            readonly "__#4@#constraints": string[];
+                            readonly "__#5@#constraints": string[];
                             toSql(queryGenerator: AbstractQueryGenerator): string;
                             toString(queryGenerator: AbstractQueryGenerator): void;
                         };
@@ -2097,22 +2097,22 @@ export declare class Deferrable {
                          * transaction which sets the constraints to deferred.
                          */
                         readonly SET_DEFERRED: any & ((constraints: string[]) => {
-                            readonly "__#3@#constraints": string[];
-                            toSql(queryGenerator: AbstractQueryGenerator): string;
-                            toString(queryGenerator: AbstractQueryGenerator): void;
-                        });
-                        readonly SET_IMMEDIATE: any & ((constraints: string[]) => {
                             readonly "__#4@#constraints": string[];
                             toSql(queryGenerator: AbstractQueryGenerator): string;
                             toString(queryGenerator: AbstractQueryGenerator): void;
                         });
+                        readonly SET_IMMEDIATE: any & ((constraints: string[]) => {
+                            readonly "__#5@#constraints": string[];
+                            toSql(queryGenerator: AbstractQueryGenerator): string;
+                            toString(queryGenerator: AbstractQueryGenerator): void;
+                        });
                     } & ((constraints: string[]) => {
-                        readonly "__#4@#constraints": string[];
+                        readonly "__#5@#constraints": string[];
                         toSql(queryGenerator: AbstractQueryGenerator): string;
                         toString(queryGenerator: AbstractQueryGenerator): void;
                     });
                 } & ((constraints: string[]) => {
-                    readonly "__#3@#constraints": string[];
+                    readonly "__#4@#constraints": string[];
                     toSql(queryGenerator: AbstractQueryGenerator): string;
                     toString(queryGenerator: AbstractQueryGenerator): void;
                 });
@@ -2122,7 +2122,7 @@ export declare class Deferrable {
                  */
                 readonly SET_IMMEDIATE: {
                     new (constraints: string[]): {
-                        readonly "__#4@#constraints": string[];
+                        readonly "__#5@#constraints": string[];
                         toSql(queryGenerator: AbstractQueryGenerator): string;
                         toString(queryGenerator: AbstractQueryGenerator): void;
                     };
@@ -2148,17 +2148,17 @@ export declare class Deferrable {
                      * transaction which sets the constraints to deferred.
                      */
                     readonly SET_DEFERRED: any & ((constraints: string[]) => {
-                        readonly "__#3@#constraints": string[];
-                        toSql(queryGenerator: AbstractQueryGenerator): string;
-                        toString(queryGenerator: AbstractQueryGenerator): void;
-                    });
-                    readonly SET_IMMEDIATE: any & ((constraints: string[]) => {
                         readonly "__#4@#constraints": string[];
                         toSql(queryGenerator: AbstractQueryGenerator): string;
                         toString(queryGenerator: AbstractQueryGenerator): void;
                     });
+                    readonly SET_IMMEDIATE: any & ((constraints: string[]) => {
+                        readonly "__#5@#constraints": string[];
+                        toSql(queryGenerator: AbstractQueryGenerator): string;
+                        toString(queryGenerator: AbstractQueryGenerator): void;
+                    });
                 } & ((constraints: string[]) => {
-                    readonly "__#4@#constraints": string[];
+                    readonly "__#5@#constraints": string[];
                     toSql(queryGenerator: AbstractQueryGenerator): string;
                     toString(queryGenerator: AbstractQueryGenerator): void;
                 });
@@ -2172,7 +2172,7 @@ export declare class Deferrable {
              */
             readonly SET_DEFERRED: {
                 new (constraints: string[]): {
-                    readonly "__#3@#constraints": string[];
+                    readonly "__#4@#constraints": string[];
                     toSql(queryGenerator: AbstractQueryGenerator): string;
                     toString(queryGenerator: AbstractQueryGenerator): void;
                 };
@@ -2194,7 +2194,7 @@ export declare class Deferrable {
                     toString(queryGenerator: AbstractQueryGenerator): void;
                 });
                 readonly SET_DEFERRED: any & ((constraints: string[]) => {
-                    readonly "__#3@#constraints": string[];
+                    readonly "__#4@#constraints": string[];
                     toSql(queryGenerator: AbstractQueryGenerator): string;
                     toString(queryGenerator: AbstractQueryGenerator): void;
                 });
@@ -2204,7 +2204,7 @@ export declare class Deferrable {
                  */
                 readonly SET_IMMEDIATE: {
                     new (constraints: string[]): {
-                        readonly "__#4@#constraints": string[];
+                        readonly "__#5@#constraints": string[];
                         toSql(queryGenerator: AbstractQueryGenerator): string;
                         toString(queryGenerator: AbstractQueryGenerator): void;
                     };
@@ -2230,22 +2230,22 @@ export declare class Deferrable {
                      * transaction which sets the constraints to deferred.
                      */
                     readonly SET_DEFERRED: any & ((constraints: string[]) => {
-                        readonly "__#3@#constraints": string[];
-                        toSql(queryGenerator: AbstractQueryGenerator): string;
-                        toString(queryGenerator: AbstractQueryGenerator): void;
-                    });
-                    readonly SET_IMMEDIATE: any & ((constraints: string[]) => {
                         readonly "__#4@#constraints": string[];
                         toSql(queryGenerator: AbstractQueryGenerator): string;
                         toString(queryGenerator: AbstractQueryGenerator): void;
                     });
+                    readonly SET_IMMEDIATE: any & ((constraints: string[]) => {
+                        readonly "__#5@#constraints": string[];
+                        toSql(queryGenerator: AbstractQueryGenerator): string;
+                        toString(queryGenerator: AbstractQueryGenerator): void;
+                    });
                 } & ((constraints: string[]) => {
-                    readonly "__#4@#constraints": string[];
+                    readonly "__#5@#constraints": string[];
                     toSql(queryGenerator: AbstractQueryGenerator): string;
                     toString(queryGenerator: AbstractQueryGenerator): void;
                 });
             } & ((constraints: string[]) => {
-                readonly "__#3@#constraints": string[];
+                readonly "__#4@#constraints": string[];
                 toSql(queryGenerator: AbstractQueryGenerator): string;
                 toString(queryGenerator: AbstractQueryGenerator): void;
             });
@@ -2255,7 +2255,7 @@ export declare class Deferrable {
              */
             readonly SET_IMMEDIATE: {
                 new (constraints: string[]): {
-                    readonly "__#4@#constraints": string[];
+                    readonly "__#5@#constraints": string[];
                     toSql(queryGenerator: AbstractQueryGenerator): string;
                     toString(queryGenerator: AbstractQueryGenerator): void;
                 };
@@ -2281,17 +2281,17 @@ export declare class Deferrable {
                  * transaction which sets the constraints to deferred.
                  */
                 readonly SET_DEFERRED: any & ((constraints: string[]) => {
-                    readonly "__#3@#constraints": string[];
-                    toSql(queryGenerator: AbstractQueryGenerator): string;
-                    toString(queryGenerator: AbstractQueryGenerator): void;
-                });
-                readonly SET_IMMEDIATE: any & ((constraints: string[]) => {
                     readonly "__#4@#constraints": string[];
                     toSql(queryGenerator: AbstractQueryGenerator): string;
                     toString(queryGenerator: AbstractQueryGenerator): void;
                 });
+                readonly SET_IMMEDIATE: any & ((constraints: string[]) => {
+                    readonly "__#5@#constraints": string[];
+                    toSql(queryGenerator: AbstractQueryGenerator): string;
+                    toString(queryGenerator: AbstractQueryGenerator): void;
+                });
             } & ((constraints: string[]) => {
-                readonly "__#4@#constraints": string[];
+                readonly "__#5@#constraints": string[];
                 toSql(queryGenerator: AbstractQueryGenerator): string;
                 toString(queryGenerator: AbstractQueryGenerator): void;
             });
@@ -2341,7 +2341,7 @@ export declare class Deferrable {
                  */
                 readonly SET_DEFERRED: {
                     new (constraints: string[]): {
-                        readonly "__#3@#constraints": string[];
+                        readonly "__#4@#constraints": string[];
                         toSql(queryGenerator: AbstractQueryGenerator): string;
                         toString(queryGenerator: AbstractQueryGenerator): void;
                     };
@@ -2363,7 +2363,7 @@ export declare class Deferrable {
                         toString(queryGenerator: AbstractQueryGenerator): void;
                     });
                     readonly SET_DEFERRED: any & ((constraints: string[]) => {
-                        readonly "__#3@#constraints": string[];
+                        readonly "__#4@#constraints": string[];
                         toSql(queryGenerator: AbstractQueryGenerator): string;
                         toString(queryGenerator: AbstractQueryGenerator): void;
                     });
@@ -2373,7 +2373,7 @@ export declare class Deferrable {
                      */
                     readonly SET_IMMEDIATE: {
                         new (constraints: string[]): {
-                            readonly "__#4@#constraints": string[];
+                            readonly "__#5@#constraints": string[];
                             toSql(queryGenerator: AbstractQueryGenerator): string;
                             toString(queryGenerator: AbstractQueryGenerator): void;
                         };
@@ -2399,22 +2399,22 @@ export declare class Deferrable {
                          * transaction which sets the constraints to deferred.
                          */
                         readonly SET_DEFERRED: any & ((constraints: string[]) => {
-                            readonly "__#3@#constraints": string[];
-                            toSql(queryGenerator: AbstractQueryGenerator): string;
-                            toString(queryGenerator: AbstractQueryGenerator): void;
-                        });
-                        readonly SET_IMMEDIATE: any & ((constraints: string[]) => {
                             readonly "__#4@#constraints": string[];
                             toSql(queryGenerator: AbstractQueryGenerator): string;
                             toString(queryGenerator: AbstractQueryGenerator): void;
                         });
+                        readonly SET_IMMEDIATE: any & ((constraints: string[]) => {
+                            readonly "__#5@#constraints": string[];
+                            toSql(queryGenerator: AbstractQueryGenerator): string;
+                            toString(queryGenerator: AbstractQueryGenerator): void;
+                        });
                     } & ((constraints: string[]) => {
-                        readonly "__#4@#constraints": string[];
+                        readonly "__#5@#constraints": string[];
                         toSql(queryGenerator: AbstractQueryGenerator): string;
                         toString(queryGenerator: AbstractQueryGenerator): void;
                     });
                 } & ((constraints: string[]) => {
-                    readonly "__#3@#constraints": string[];
+                    readonly "__#4@#constraints": string[];
                     toSql(queryGenerator: AbstractQueryGenerator): string;
                     toString(queryGenerator: AbstractQueryGenerator): void;
                 });
@@ -2424,7 +2424,7 @@ export declare class Deferrable {
                  */
                 readonly SET_IMMEDIATE: {
                     new (constraints: string[]): {
-                        readonly "__#4@#constraints": string[];
+                        readonly "__#5@#constraints": string[];
                         toSql(queryGenerator: AbstractQueryGenerator): string;
                         toString(queryGenerator: AbstractQueryGenerator): void;
                     };
@@ -2450,17 +2450,17 @@ export declare class Deferrable {
                      * transaction which sets the constraints to deferred.
                      */
                     readonly SET_DEFERRED: any & ((constraints: string[]) => {
-                        readonly "__#3@#constraints": string[];
-                        toSql(queryGenerator: AbstractQueryGenerator): string;
-                        toString(queryGenerator: AbstractQueryGenerator): void;
-                    });
-                    readonly SET_IMMEDIATE: any & ((constraints: string[]) => {
                         readonly "__#4@#constraints": string[];
                         toSql(queryGenerator: AbstractQueryGenerator): string;
                         toString(queryGenerator: AbstractQueryGenerator): void;
                     });
+                    readonly SET_IMMEDIATE: any & ((constraints: string[]) => {
+                        readonly "__#5@#constraints": string[];
+                        toSql(queryGenerator: AbstractQueryGenerator): string;
+                        toString(queryGenerator: AbstractQueryGenerator): void;
+                    });
                 } & ((constraints: string[]) => {
-                    readonly "__#4@#constraints": string[];
+                    readonly "__#5@#constraints": string[];
                     toSql(queryGenerator: AbstractQueryGenerator): string;
                     toString(queryGenerator: AbstractQueryGenerator): void;
                 });
@@ -2474,7 +2474,7 @@ export declare class Deferrable {
              */
             readonly SET_DEFERRED: {
                 new (constraints: string[]): {
-                    readonly "__#3@#constraints": string[];
+                    readonly "__#4@#constraints": string[];
                     toSql(queryGenerator: AbstractQueryGenerator): string;
                     toString(queryGenerator: AbstractQueryGenerator): void;
                 };
@@ -2496,7 +2496,7 @@ export declare class Deferrable {
                     toString(queryGenerator: AbstractQueryGenerator): void;
                 });
                 readonly SET_DEFERRED: any & ((constraints: string[]) => {
-                    readonly "__#3@#constraints": string[];
+                    readonly "__#4@#constraints": string[];
                     toSql(queryGenerator: AbstractQueryGenerator): string;
                     toString(queryGenerator: AbstractQueryGenerator): void;
                 });
@@ -2506,7 +2506,7 @@ export declare class Deferrable {
                  */
                 readonly SET_IMMEDIATE: {
                     new (constraints: string[]): {
-                        readonly "__#4@#constraints": string[];
+                        readonly "__#5@#constraints": string[];
                         toSql(queryGenerator: AbstractQueryGenerator): string;
                         toString(queryGenerator: AbstractQueryGenerator): void;
                     };
@@ -2532,22 +2532,22 @@ export declare class Deferrable {
                      * transaction which sets the constraints to deferred.
                      */
                     readonly SET_DEFERRED: any & ((constraints: string[]) => {
-                        readonly "__#3@#constraints": string[];
-                        toSql(queryGenerator: AbstractQueryGenerator): string;
-                        toString(queryGenerator: AbstractQueryGenerator): void;
-                    });
-                    readonly SET_IMMEDIATE: any & ((constraints: string[]) => {
                         readonly "__#4@#constraints": string[];
                         toSql(queryGenerator: AbstractQueryGenerator): string;
                         toString(queryGenerator: AbstractQueryGenerator): void;
                     });
+                    readonly SET_IMMEDIATE: any & ((constraints: string[]) => {
+                        readonly "__#5@#constraints": string[];
+                        toSql(queryGenerator: AbstractQueryGenerator): string;
+                        toString(queryGenerator: AbstractQueryGenerator): void;
+                    });
                 } & ((constraints: string[]) => {
-                    readonly "__#4@#constraints": string[];
+                    readonly "__#5@#constraints": string[];
                     toSql(queryGenerator: AbstractQueryGenerator): string;
                     toString(queryGenerator: AbstractQueryGenerator): void;
                 });
             } & ((constraints: string[]) => {
-                readonly "__#3@#constraints": string[];
+                readonly "__#4@#constraints": string[];
                 toSql(queryGenerator: AbstractQueryGenerator): string;
                 toString(queryGenerator: AbstractQueryGenerator): void;
             });
@@ -2557,7 +2557,7 @@ export declare class Deferrable {
              */
             readonly SET_IMMEDIATE: {
                 new (constraints: string[]): {
-                    readonly "__#4@#constraints": string[];
+                    readonly "__#5@#constraints": string[];
                     toSql(queryGenerator: AbstractQueryGenerator): string;
                     toString(queryGenerator: AbstractQueryGenerator): void;
                 };
@@ -2583,17 +2583,17 @@ export declare class Deferrable {
                  * transaction which sets the constraints to deferred.
                  */
                 readonly SET_DEFERRED: any & ((constraints: string[]) => {
-                    readonly "__#3@#constraints": string[];
-                    toSql(queryGenerator: AbstractQueryGenerator): string;
-                    toString(queryGenerator: AbstractQueryGenerator): void;
-                });
-                readonly SET_IMMEDIATE: any & ((constraints: string[]) => {
                     readonly "__#4@#constraints": string[];
                     toSql(queryGenerator: AbstractQueryGenerator): string;
                     toString(queryGenerator: AbstractQueryGenerator): void;
                 });
+                readonly SET_IMMEDIATE: any & ((constraints: string[]) => {
+                    readonly "__#5@#constraints": string[];
+                    toSql(queryGenerator: AbstractQueryGenerator): string;
+                    toString(queryGenerator: AbstractQueryGenerator): void;
+                });
             } & ((constraints: string[]) => {
-                readonly "__#4@#constraints": string[];
+                readonly "__#5@#constraints": string[];
                 toSql(queryGenerator: AbstractQueryGenerator): string;
                 toString(queryGenerator: AbstractQueryGenerator): void;
             });
@@ -2629,7 +2629,7 @@ export declare class Deferrable {
              */
             readonly SET_DEFERRED: {
                 new (constraints: string[]): {
-                    readonly "__#3@#constraints": string[];
+                    readonly "__#4@#constraints": string[];
                     toSql(queryGenerator: AbstractQueryGenerator): string;
                     toString(queryGenerator: AbstractQueryGenerator): void;
                 };
@@ -2651,7 +2651,7 @@ export declare class Deferrable {
                     toString(queryGenerator: AbstractQueryGenerator): void;
                 });
                 readonly SET_DEFERRED: any & ((constraints: string[]) => {
-                    readonly "__#3@#constraints": string[];
+                    readonly "__#4@#constraints": string[];
                     toSql(queryGenerator: AbstractQueryGenerator): string;
                     toString(queryGenerator: AbstractQueryGenerator): void;
                 });
@@ -2661,7 +2661,7 @@ export declare class Deferrable {
                  */
                 readonly SET_IMMEDIATE: {
                     new (constraints: string[]): {
-                        readonly "__#4@#constraints": string[];
+                        readonly "__#5@#constraints": string[];
                         toSql(queryGenerator: AbstractQueryGenerator): string;
                         toString(queryGenerator: AbstractQueryGenerator): void;
                     };
@@ -2687,22 +2687,22 @@ export declare class Deferrable {
                      * transaction which sets the constraints to deferred.
                      */
                     readonly SET_DEFERRED: any & ((constraints: string[]) => {
-                        readonly "__#3@#constraints": string[];
-                        toSql(queryGenerator: AbstractQueryGenerator): string;
-                        toString(queryGenerator: AbstractQueryGenerator): void;
-                    });
-                    readonly SET_IMMEDIATE: any & ((constraints: string[]) => {
                         readonly "__#4@#constraints": string[];
                         toSql(queryGenerator: AbstractQueryGenerator): string;
                         toString(queryGenerator: AbstractQueryGenerator): void;
                     });
+                    readonly SET_IMMEDIATE: any & ((constraints: string[]) => {
+                        readonly "__#5@#constraints": string[];
+                        toSql(queryGenerator: AbstractQueryGenerator): string;
+                        toString(queryGenerator: AbstractQueryGenerator): void;
+                    });
                 } & ((constraints: string[]) => {
-                    readonly "__#4@#constraints": string[];
+                    readonly "__#5@#constraints": string[];
                     toSql(queryGenerator: AbstractQueryGenerator): string;
                     toString(queryGenerator: AbstractQueryGenerator): void;
                 });
             } & ((constraints: string[]) => {
-                readonly "__#3@#constraints": string[];
+                readonly "__#4@#constraints": string[];
                 toSql(queryGenerator: AbstractQueryGenerator): string;
                 toString(queryGenerator: AbstractQueryGenerator): void;
             });
@@ -2712,7 +2712,7 @@ export declare class Deferrable {
              */
             readonly SET_IMMEDIATE: {
                 new (constraints: string[]): {
-                    readonly "__#4@#constraints": string[];
+                    readonly "__#5@#constraints": string[];
                     toSql(queryGenerator: AbstractQueryGenerator): string;
                     toString(queryGenerator: AbstractQueryGenerator): void;
                 };
@@ -2738,17 +2738,17 @@ export declare class Deferrable {
                  * transaction which sets the constraints to deferred.
                  */
                 readonly SET_DEFERRED: any & ((constraints: string[]) => {
-                    readonly "__#3@#constraints": string[];
-                    toSql(queryGenerator: AbstractQueryGenerator): string;
-                    toString(queryGenerator: AbstractQueryGenerator): void;
-                });
-                readonly SET_IMMEDIATE: any & ((constraints: string[]) => {
                     readonly "__#4@#constraints": string[];
                     toSql(queryGenerator: AbstractQueryGenerator): string;
                     toString(queryGenerator: AbstractQueryGenerator): void;
                 });
+                readonly SET_IMMEDIATE: any & ((constraints: string[]) => {
+                    readonly "__#5@#constraints": string[];
+                    toSql(queryGenerator: AbstractQueryGenerator): string;
+                    toString(queryGenerator: AbstractQueryGenerator): void;
+                });
             } & ((constraints: string[]) => {
-                readonly "__#4@#constraints": string[];
+                readonly "__#5@#constraints": string[];
                 toSql(queryGenerator: AbstractQueryGenerator): string;
                 toString(queryGenerator: AbstractQueryGenerator): void;
             });
@@ -2757,7 +2757,7 @@ export declare class Deferrable {
             toString(queryGenerator: AbstractQueryGenerator): void;
         });
         readonly SET_DEFERRED: any & ((constraints: string[]) => {
-            readonly "__#3@#constraints": string[];
+            readonly "__#4@#constraints": string[];
             toSql(queryGenerator: AbstractQueryGenerator): string;
             toString(queryGenerator: AbstractQueryGenerator): void;
         });
@@ -2767,7 +2767,7 @@ export declare class Deferrable {
          */
         readonly SET_IMMEDIATE: {
             new (constraints: string[]): {
-                readonly "__#4@#constraints": string[];
+                readonly "__#5@#constraints": string[];
                 toSql(queryGenerator: AbstractQueryGenerator): string;
                 toString(queryGenerator: AbstractQueryGenerator): void;
             };
@@ -2793,22 +2793,22 @@ export declare class Deferrable {
              * transaction which sets the constraints to deferred.
              */
             readonly SET_DEFERRED: any & ((constraints: string[]) => {
-                readonly "__#3@#constraints": string[];
-                toSql(queryGenerator: AbstractQueryGenerator): string;
-                toString(queryGenerator: AbstractQueryGenerator): void;
-            });
-            readonly SET_IMMEDIATE: any & ((constraints: string[]) => {
                 readonly "__#4@#constraints": string[];
                 toSql(queryGenerator: AbstractQueryGenerator): string;
                 toString(queryGenerator: AbstractQueryGenerator): void;
             });
+            readonly SET_IMMEDIATE: any & ((constraints: string[]) => {
+                readonly "__#5@#constraints": string[];
+                toSql(queryGenerator: AbstractQueryGenerator): string;
+                toString(queryGenerator: AbstractQueryGenerator): void;
+            });
         } & ((constraints: string[]) => {
-            readonly "__#4@#constraints": string[];
+            readonly "__#5@#constraints": string[];
             toSql(queryGenerator: AbstractQueryGenerator): string;
             toString(queryGenerator: AbstractQueryGenerator): void;
         });
     } & ((constraints: string[]) => {
-        readonly "__#3@#constraints": string[];
+        readonly "__#4@#constraints": string[];
         toSql(queryGenerator: AbstractQueryGenerator): string;
         toString(queryGenerator: AbstractQueryGenerator): void;
     });
@@ -2818,7 +2818,7 @@ export declare class Deferrable {
      */
     static readonly SET_IMMEDIATE: {
         new (constraints: string[]): {
-            readonly "__#4@#constraints": string[];
+            readonly "__#5@#constraints": string[];
             toSql(queryGenerator: AbstractQueryGenerator): string;
             toString(queryGenerator: AbstractQueryGenerator): void;
         };
@@ -2865,7 +2865,7 @@ export declare class Deferrable {
                  */
                 readonly SET_DEFERRED: {
                     new (constraints: string[]): {
-                        readonly "__#3@#constraints": string[];
+                        readonly "__#4@#constraints": string[];
                         toSql(queryGenerator: AbstractQueryGenerator): string;
                         toString(queryGenerator: AbstractQueryGenerator): void;
                     };
@@ -2887,7 +2887,7 @@ export declare class Deferrable {
                         toString(queryGenerator: AbstractQueryGenerator): void;
                     });
                     readonly SET_DEFERRED: any & ((constraints: string[]) => {
-                        readonly "__#3@#constraints": string[];
+                        readonly "__#4@#constraints": string[];
                         toSql(queryGenerator: AbstractQueryGenerator): string;
                         toString(queryGenerator: AbstractQueryGenerator): void;
                     });
@@ -2897,7 +2897,7 @@ export declare class Deferrable {
                      */
                     readonly SET_IMMEDIATE: {
                         new (constraints: string[]): {
-                            readonly "__#4@#constraints": string[];
+                            readonly "__#5@#constraints": string[];
                             toSql(queryGenerator: AbstractQueryGenerator): string;
                             toString(queryGenerator: AbstractQueryGenerator): void;
                         };
@@ -2923,22 +2923,22 @@ export declare class Deferrable {
                          * transaction which sets the constraints to deferred.
                          */
                         readonly SET_DEFERRED: any & ((constraints: string[]) => {
-                            readonly "__#3@#constraints": string[];
-                            toSql(queryGenerator: AbstractQueryGenerator): string;
-                            toString(queryGenerator: AbstractQueryGenerator): void;
-                        });
-                        readonly SET_IMMEDIATE: any & ((constraints: string[]) => {
                             readonly "__#4@#constraints": string[];
                             toSql(queryGenerator: AbstractQueryGenerator): string;
                             toString(queryGenerator: AbstractQueryGenerator): void;
                         });
+                        readonly SET_IMMEDIATE: any & ((constraints: string[]) => {
+                            readonly "__#5@#constraints": string[];
+                            toSql(queryGenerator: AbstractQueryGenerator): string;
+                            toString(queryGenerator: AbstractQueryGenerator): void;
+                        });
                     } & ((constraints: string[]) => {
-                        readonly "__#4@#constraints": string[];
+                        readonly "__#5@#constraints": string[];
                         toSql(queryGenerator: AbstractQueryGenerator): string;
                         toString(queryGenerator: AbstractQueryGenerator): void;
                     });
                 } & ((constraints: string[]) => {
-                    readonly "__#3@#constraints": string[];
+                    readonly "__#4@#constraints": string[];
                     toSql(queryGenerator: AbstractQueryGenerator): string;
                     toString(queryGenerator: AbstractQueryGenerator): void;
                 });
@@ -2948,7 +2948,7 @@ export declare class Deferrable {
                  */
                 readonly SET_IMMEDIATE: {
                     new (constraints: string[]): {
-                        readonly "__#4@#constraints": string[];
+                        readonly "__#5@#constraints": string[];
                         toSql(queryGenerator: AbstractQueryGenerator): string;
                         toString(queryGenerator: AbstractQueryGenerator): void;
                     };
@@ -2974,17 +2974,17 @@ export declare class Deferrable {
                      * transaction which sets the constraints to deferred.
                      */
                     readonly SET_DEFERRED: any & ((constraints: string[]) => {
-                        readonly "__#3@#constraints": string[];
-                        toSql(queryGenerator: AbstractQueryGenerator): string;
-                        toString(queryGenerator: AbstractQueryGenerator): void;
-                    });
-                    readonly SET_IMMEDIATE: any & ((constraints: string[]) => {
                         readonly "__#4@#constraints": string[];
                         toSql(queryGenerator: AbstractQueryGenerator): string;
                         toString(queryGenerator: AbstractQueryGenerator): void;
                     });
+                    readonly SET_IMMEDIATE: any & ((constraints: string[]) => {
+                        readonly "__#5@#constraints": string[];
+                        toSql(queryGenerator: AbstractQueryGenerator): string;
+                        toString(queryGenerator: AbstractQueryGenerator): void;
+                    });
                 } & ((constraints: string[]) => {
-                    readonly "__#4@#constraints": string[];
+                    readonly "__#5@#constraints": string[];
                     toSql(queryGenerator: AbstractQueryGenerator): string;
                     toString(queryGenerator: AbstractQueryGenerator): void;
                 });
@@ -2998,7 +2998,7 @@ export declare class Deferrable {
              */
             readonly SET_DEFERRED: {
                 new (constraints: string[]): {
-                    readonly "__#3@#constraints": string[];
+                    readonly "__#4@#constraints": string[];
                     toSql(queryGenerator: AbstractQueryGenerator): string;
                     toString(queryGenerator: AbstractQueryGenerator): void;
                 };
@@ -3020,7 +3020,7 @@ export declare class Deferrable {
                     toString(queryGenerator: AbstractQueryGenerator): void;
                 });
                 readonly SET_DEFERRED: any & ((constraints: string[]) => {
-                    readonly "__#3@#constraints": string[];
+                    readonly "__#4@#constraints": string[];
                     toSql(queryGenerator: AbstractQueryGenerator): string;
                     toString(queryGenerator: AbstractQueryGenerator): void;
                 });
@@ -3030,7 +3030,7 @@ export declare class Deferrable {
                  */
                 readonly SET_IMMEDIATE: {
                     new (constraints: string[]): {
-                        readonly "__#4@#constraints": string[];
+                        readonly "__#5@#constraints": string[];
                         toSql(queryGenerator: AbstractQueryGenerator): string;
                         toString(queryGenerator: AbstractQueryGenerator): void;
                     };
@@ -3056,22 +3056,22 @@ export declare class Deferrable {
                      * transaction which sets the constraints to deferred.
                      */
                     readonly SET_DEFERRED: any & ((constraints: string[]) => {
-                        readonly "__#3@#constraints": string[];
-                        toSql(queryGenerator: AbstractQueryGenerator): string;
-                        toString(queryGenerator: AbstractQueryGenerator): void;
-                    });
-                    readonly SET_IMMEDIATE: any & ((constraints: string[]) => {
                         readonly "__#4@#constraints": string[];
                         toSql(queryGenerator: AbstractQueryGenerator): string;
                         toString(queryGenerator: AbstractQueryGenerator): void;
                     });
+                    readonly SET_IMMEDIATE: any & ((constraints: string[]) => {
+                        readonly "__#5@#constraints": string[];
+                        toSql(queryGenerator: AbstractQueryGenerator): string;
+                        toString(queryGenerator: AbstractQueryGenerator): void;
+                    });
                 } & ((constraints: string[]) => {
-                    readonly "__#4@#constraints": string[];
+                    readonly "__#5@#constraints": string[];
                     toSql(queryGenerator: AbstractQueryGenerator): string;
                     toString(queryGenerator: AbstractQueryGenerator): void;
                 });
             } & ((constraints: string[]) => {
-                readonly "__#3@#constraints": string[];
+                readonly "__#4@#constraints": string[];
                 toSql(queryGenerator: AbstractQueryGenerator): string;
                 toString(queryGenerator: AbstractQueryGenerator): void;
             });
@@ -3081,7 +3081,7 @@ export declare class Deferrable {
              */
             readonly SET_IMMEDIATE: {
                 new (constraints: string[]): {
-                    readonly "__#4@#constraints": string[];
+                    readonly "__#5@#constraints": string[];
                     toSql(queryGenerator: AbstractQueryGenerator): string;
                     toString(queryGenerator: AbstractQueryGenerator): void;
                 };
@@ -3107,17 +3107,17 @@ export declare class Deferrable {
                  * transaction which sets the constraints to deferred.
                  */
                 readonly SET_DEFERRED: any & ((constraints: string[]) => {
-                    readonly "__#3@#constraints": string[];
-                    toSql(queryGenerator: AbstractQueryGenerator): string;
-                    toString(queryGenerator: AbstractQueryGenerator): void;
-                });
-                readonly SET_IMMEDIATE: any & ((constraints: string[]) => {
                     readonly "__#4@#constraints": string[];
                     toSql(queryGenerator: AbstractQueryGenerator): string;
                     toString(queryGenerator: AbstractQueryGenerator): void;
                 });
+                readonly SET_IMMEDIATE: any & ((constraints: string[]) => {
+                    readonly "__#5@#constraints": string[];
+                    toSql(queryGenerator: AbstractQueryGenerator): string;
+                    toString(queryGenerator: AbstractQueryGenerator): void;
+                });
             } & ((constraints: string[]) => {
-                readonly "__#4@#constraints": string[];
+                readonly "__#5@#constraints": string[];
                 toSql(queryGenerator: AbstractQueryGenerator): string;
                 toString(queryGenerator: AbstractQueryGenerator): void;
             });
@@ -3167,7 +3167,7 @@ export declare class Deferrable {
                  */
                 readonly SET_DEFERRED: {
                     new (constraints: string[]): {
-                        readonly "__#3@#constraints": string[];
+                        readonly "__#4@#constraints": string[];
                         toSql(queryGenerator: AbstractQueryGenerator): string;
                         toString(queryGenerator: AbstractQueryGenerator): void;
                     };
@@ -3189,7 +3189,7 @@ export declare class Deferrable {
                         toString(queryGenerator: AbstractQueryGenerator): void;
                     });
                     readonly SET_DEFERRED: any & ((constraints: string[]) => {
-                        readonly "__#3@#constraints": string[];
+                        readonly "__#4@#constraints": string[];
                         toSql(queryGenerator: AbstractQueryGenerator): string;
                         toString(queryGenerator: AbstractQueryGenerator): void;
                     });
@@ -3199,7 +3199,7 @@ export declare class Deferrable {
                      */
                     readonly SET_IMMEDIATE: {
                         new (constraints: string[]): {
-                            readonly "__#4@#constraints": string[];
+                            readonly "__#5@#constraints": string[];
                             toSql(queryGenerator: AbstractQueryGenerator): string;
                             toString(queryGenerator: AbstractQueryGenerator): void;
                         };
@@ -3225,22 +3225,22 @@ export declare class Deferrable {
                          * transaction which sets the constraints to deferred.
                          */
                         readonly SET_DEFERRED: any & ((constraints: string[]) => {
-                            readonly "__#3@#constraints": string[];
-                            toSql(queryGenerator: AbstractQueryGenerator): string;
-                            toString(queryGenerator: AbstractQueryGenerator): void;
-                        });
-                        readonly SET_IMMEDIATE: any & ((constraints: string[]) => {
                             readonly "__#4@#constraints": string[];
                             toSql(queryGenerator: AbstractQueryGenerator): string;
                             toString(queryGenerator: AbstractQueryGenerator): void;
                         });
+                        readonly SET_IMMEDIATE: any & ((constraints: string[]) => {
+                            readonly "__#5@#constraints": string[];
+                            toSql(queryGenerator: AbstractQueryGenerator): string;
+                            toString(queryGenerator: AbstractQueryGenerator): void;
+                        });
                     } & ((constraints: string[]) => {
-                        readonly "__#4@#constraints": string[];
+                        readonly "__#5@#constraints": string[];
                         toSql(queryGenerator: AbstractQueryGenerator): string;
                         toString(queryGenerator: AbstractQueryGenerator): void;
                     });
                 } & ((constraints: string[]) => {
-                    readonly "__#3@#constraints": string[];
+                    readonly "__#4@#constraints": string[];
                     toSql(queryGenerator: AbstractQueryGenerator): string;
                     toString(queryGenerator: AbstractQueryGenerator): void;
                 });
@@ -3250,7 +3250,7 @@ export declare class Deferrable {
                  */
                 readonly SET_IMMEDIATE: {
                     new (constraints: string[]): {
-                        readonly "__#4@#constraints": string[];
+                        readonly "__#5@#constraints": string[];
                         toSql(queryGenerator: AbstractQueryGenerator): string;
                         toString(queryGenerator: AbstractQueryGenerator): void;
                     };
@@ -3276,17 +3276,17 @@ export declare class Deferrable {
                      * transaction which sets the constraints to deferred.
                      */
                     readonly SET_DEFERRED: any & ((constraints: string[]) => {
-                        readonly "__#3@#constraints": string[];
-                        toSql(queryGenerator: AbstractQueryGenerator): string;
-                        toString(queryGenerator: AbstractQueryGenerator): void;
-                    });
-                    readonly SET_IMMEDIATE: any & ((constraints: string[]) => {
                         readonly "__#4@#constraints": string[];
                         toSql(queryGenerator: AbstractQueryGenerator): string;
                         toString(queryGenerator: AbstractQueryGenerator): void;
                     });
+                    readonly SET_IMMEDIATE: any & ((constraints: string[]) => {
+                        readonly "__#5@#constraints": string[];
+                        toSql(queryGenerator: AbstractQueryGenerator): string;
+                        toString(queryGenerator: AbstractQueryGenerator): void;
+                    });
                 } & ((constraints: string[]) => {
-                    readonly "__#4@#constraints": string[];
+                    readonly "__#5@#constraints": string[];
                     toSql(queryGenerator: AbstractQueryGenerator): string;
                     toString(queryGenerator: AbstractQueryGenerator): void;
                 });
@@ -3300,7 +3300,7 @@ export declare class Deferrable {
              */
             readonly SET_DEFERRED: {
                 new (constraints: string[]): {
-                    readonly "__#3@#constraints": string[];
+                    readonly "__#4@#constraints": string[];
                     toSql(queryGenerator: AbstractQueryGenerator): string;
                     toString(queryGenerator: AbstractQueryGenerator): void;
                 };
@@ -3322,7 +3322,7 @@ export declare class Deferrable {
                     toString(queryGenerator: AbstractQueryGenerator): void;
                 });
                 readonly SET_DEFERRED: any & ((constraints: string[]) => {
-                    readonly "__#3@#constraints": string[];
+                    readonly "__#4@#constraints": string[];
                     toSql(queryGenerator: AbstractQueryGenerator): string;
                     toString(queryGenerator: AbstractQueryGenerator): void;
                 });
@@ -3332,7 +3332,7 @@ export declare class Deferrable {
                  */
                 readonly SET_IMMEDIATE: {
                     new (constraints: string[]): {
-                        readonly "__#4@#constraints": string[];
+                        readonly "__#5@#constraints": string[];
                         toSql(queryGenerator: AbstractQueryGenerator): string;
                         toString(queryGenerator: AbstractQueryGenerator): void;
                     };
@@ -3358,22 +3358,22 @@ export declare class Deferrable {
                      * transaction which sets the constraints to deferred.
                      */
                     readonly SET_DEFERRED: any & ((constraints: string[]) => {
-                        readonly "__#3@#constraints": string[];
-                        toSql(queryGenerator: AbstractQueryGenerator): string;
-                        toString(queryGenerator: AbstractQueryGenerator): void;
-                    });
-                    readonly SET_IMMEDIATE: any & ((constraints: string[]) => {
                         readonly "__#4@#constraints": string[];
                         toSql(queryGenerator: AbstractQueryGenerator): string;
                         toString(queryGenerator: AbstractQueryGenerator): void;
                     });
+                    readonly SET_IMMEDIATE: any & ((constraints: string[]) => {
+                        readonly "__#5@#constraints": string[];
+                        toSql(queryGenerator: AbstractQueryGenerator): string;
+                        toString(queryGenerator: AbstractQueryGenerator): void;
+                    });
                 } & ((constraints: string[]) => {
-                    readonly "__#4@#constraints": string[];
+                    readonly "__#5@#constraints": string[];
                     toSql(queryGenerator: AbstractQueryGenerator): string;
                     toString(queryGenerator: AbstractQueryGenerator): void;
                 });
             } & ((constraints: string[]) => {
-                readonly "__#3@#constraints": string[];
+                readonly "__#4@#constraints": string[];
                 toSql(queryGenerator: AbstractQueryGenerator): string;
                 toString(queryGenerator: AbstractQueryGenerator): void;
             });
@@ -3383,7 +3383,7 @@ export declare class Deferrable {
              */
             readonly SET_IMMEDIATE: {
                 new (constraints: string[]): {
-                    readonly "__#4@#constraints": string[];
+                    readonly "__#5@#constraints": string[];
                     toSql(queryGenerator: AbstractQueryGenerator): string;
                     toString(queryGenerator: AbstractQueryGenerator): void;
                 };
@@ -3409,17 +3409,17 @@ export declare class Deferrable {
                  * transaction which sets the constraints to deferred.
                  */
                 readonly SET_DEFERRED: any & ((constraints: string[]) => {
-                    readonly "__#3@#constraints": string[];
-                    toSql(queryGenerator: AbstractQueryGenerator): string;
-                    toString(queryGenerator: AbstractQueryGenerator): void;
-                });
-                readonly SET_IMMEDIATE: any & ((constraints: string[]) => {
                     readonly "__#4@#constraints": string[];
                     toSql(queryGenerator: AbstractQueryGenerator): string;
                     toString(queryGenerator: AbstractQueryGenerator): void;
                 });
+                readonly SET_IMMEDIATE: any & ((constraints: string[]) => {
+                    readonly "__#5@#constraints": string[];
+                    toSql(queryGenerator: AbstractQueryGenerator): string;
+                    toString(queryGenerator: AbstractQueryGenerator): void;
+                });
             } & ((constraints: string[]) => {
-                readonly "__#4@#constraints": string[];
+                readonly "__#5@#constraints": string[];
                 toSql(queryGenerator: AbstractQueryGenerator): string;
                 toString(queryGenerator: AbstractQueryGenerator): void;
             });
@@ -3455,7 +3455,7 @@ export declare class Deferrable {
              */
             readonly SET_DEFERRED: {
                 new (constraints: string[]): {
-                    readonly "__#3@#constraints": string[];
+                    readonly "__#4@#constraints": string[];
                     toSql(queryGenerator: AbstractQueryGenerator): string;
                     toString(queryGenerator: AbstractQueryGenerator): void;
                 };
@@ -3477,7 +3477,7 @@ export declare class Deferrable {
                     toString(queryGenerator: AbstractQueryGenerator): void;
                 });
                 readonly SET_DEFERRED: any & ((constraints: string[]) => {
-                    readonly "__#3@#constraints": string[];
+                    readonly "__#4@#constraints": string[];
                     toSql(queryGenerator: AbstractQueryGenerator): string;
                     toString(queryGenerator: AbstractQueryGenerator): void;
                 });
@@ -3487,7 +3487,7 @@ export declare class Deferrable {
                  */
                 readonly SET_IMMEDIATE: {
                     new (constraints: string[]): {
-                        readonly "__#4@#constraints": string[];
+                        readonly "__#5@#constraints": string[];
                         toSql(queryGenerator: AbstractQueryGenerator): string;
                         toString(queryGenerator: AbstractQueryGenerator): void;
                     };
@@ -3513,22 +3513,22 @@ export declare class Deferrable {
                      * transaction which sets the constraints to deferred.
                      */
                     readonly SET_DEFERRED: any & ((constraints: string[]) => {
-                        readonly "__#3@#constraints": string[];
-                        toSql(queryGenerator: AbstractQueryGenerator): string;
-                        toString(queryGenerator: AbstractQueryGenerator): void;
-                    });
-                    readonly SET_IMMEDIATE: any & ((constraints: string[]) => {
                         readonly "__#4@#constraints": string[];
                         toSql(queryGenerator: AbstractQueryGenerator): string;
                         toString(queryGenerator: AbstractQueryGenerator): void;
                     });
+                    readonly SET_IMMEDIATE: any & ((constraints: string[]) => {
+                        readonly "__#5@#constraints": string[];
+                        toSql(queryGenerator: AbstractQueryGenerator): string;
+                        toString(queryGenerator: AbstractQueryGenerator): void;
+                    });
                 } & ((constraints: string[]) => {
-                    readonly "__#4@#constraints": string[];
+                    readonly "__#5@#constraints": string[];
                     toSql(queryGenerator: AbstractQueryGenerator): string;
                     toString(queryGenerator: AbstractQueryGenerator): void;
                 });
             } & ((constraints: string[]) => {
-                readonly "__#3@#constraints": string[];
+                readonly "__#4@#constraints": string[];
                 toSql(queryGenerator: AbstractQueryGenerator): string;
                 toString(queryGenerator: AbstractQueryGenerator): void;
             });
@@ -3538,7 +3538,7 @@ export declare class Deferrable {
              */
             readonly SET_IMMEDIATE: {
                 new (constraints: string[]): {
-                    readonly "__#4@#constraints": string[];
+                    readonly "__#5@#constraints": string[];
                     toSql(queryGenerator: AbstractQueryGenerator): string;
                     toString(queryGenerator: AbstractQueryGenerator): void;
                 };
@@ -3564,17 +3564,17 @@ export declare class Deferrable {
                  * transaction which sets the constraints to deferred.
                  */
                 readonly SET_DEFERRED: any & ((constraints: string[]) => {
-                    readonly "__#3@#constraints": string[];
-                    toSql(queryGenerator: AbstractQueryGenerator): string;
-                    toString(queryGenerator: AbstractQueryGenerator): void;
-                });
-                readonly SET_IMMEDIATE: any & ((constraints: string[]) => {
                     readonly "__#4@#constraints": string[];
                     toSql(queryGenerator: AbstractQueryGenerator): string;
                     toString(queryGenerator: AbstractQueryGenerator): void;
                 });
+                readonly SET_IMMEDIATE: any & ((constraints: string[]) => {
+                    readonly "__#5@#constraints": string[];
+                    toSql(queryGenerator: AbstractQueryGenerator): string;
+                    toString(queryGenerator: AbstractQueryGenerator): void;
+                });
             } & ((constraints: string[]) => {
-                readonly "__#4@#constraints": string[];
+                readonly "__#5@#constraints": string[];
                 toSql(queryGenerator: AbstractQueryGenerator): string;
                 toString(queryGenerator: AbstractQueryGenerator): void;
             });
@@ -3588,7 +3588,7 @@ export declare class Deferrable {
          */
         readonly SET_DEFERRED: {
             new (constraints: string[]): {
-                readonly "__#3@#constraints": string[];
+                readonly "__#4@#constraints": string[];
                 toSql(queryGenerator: AbstractQueryGenerator): string;
                 toString(queryGenerator: AbstractQueryGenerator): void;
             };
@@ -3610,7 +3610,7 @@ export declare class Deferrable {
                 toString(queryGenerator: AbstractQueryGenerator): void;
             });
             readonly SET_DEFERRED: any & ((constraints: string[]) => {
-                readonly "__#3@#constraints": string[];
+                readonly "__#4@#constraints": string[];
                 toSql(queryGenerator: AbstractQueryGenerator): string;
                 toString(queryGenerator: AbstractQueryGenerator): void;
             });
@@ -3620,7 +3620,7 @@ export declare class Deferrable {
              */
             readonly SET_IMMEDIATE: {
                 new (constraints: string[]): {
-                    readonly "__#4@#constraints": string[];
+                    readonly "__#5@#constraints": string[];
                     toSql(queryGenerator: AbstractQueryGenerator): string;
                     toString(queryGenerator: AbstractQueryGenerator): void;
                 };
@@ -3646,32 +3646,32 @@ export declare class Deferrable {
                  * transaction which sets the constraints to deferred.
                  */
                 readonly SET_DEFERRED: any & ((constraints: string[]) => {
-                    readonly "__#3@#constraints": string[];
-                    toSql(queryGenerator: AbstractQueryGenerator): string;
-                    toString(queryGenerator: AbstractQueryGenerator): void;
-                });
-                readonly SET_IMMEDIATE: any & ((constraints: string[]) => {
                     readonly "__#4@#constraints": string[];
                     toSql(queryGenerator: AbstractQueryGenerator): string;
                     toString(queryGenerator: AbstractQueryGenerator): void;
                 });
+                readonly SET_IMMEDIATE: any & ((constraints: string[]) => {
+                    readonly "__#5@#constraints": string[];
+                    toSql(queryGenerator: AbstractQueryGenerator): string;
+                    toString(queryGenerator: AbstractQueryGenerator): void;
+                });
             } & ((constraints: string[]) => {
-                readonly "__#4@#constraints": string[];
+                readonly "__#5@#constraints": string[];
                 toSql(queryGenerator: AbstractQueryGenerator): string;
                 toString(queryGenerator: AbstractQueryGenerator): void;
             });
         } & ((constraints: string[]) => {
-            readonly "__#3@#constraints": string[];
-            toSql(queryGenerator: AbstractQueryGenerator): string;
-            toString(queryGenerator: AbstractQueryGenerator): void;
-        });
-        readonly SET_IMMEDIATE: any & ((constraints: string[]) => {
             readonly "__#4@#constraints": string[];
             toSql(queryGenerator: AbstractQueryGenerator): string;
             toString(queryGenerator: AbstractQueryGenerator): void;
         });
+        readonly SET_IMMEDIATE: any & ((constraints: string[]) => {
+            readonly "__#5@#constraints": string[];
+            toSql(queryGenerator: AbstractQueryGenerator): string;
+            toString(queryGenerator: AbstractQueryGenerator): void;
+        });
     } & ((constraints: string[]) => {
-        readonly "__#4@#constraints": string[];
+        readonly "__#5@#constraints": string[];
         toSql(queryGenerator: AbstractQueryGenerator): string;
         toString(queryGenerator: AbstractQueryGenerator): void;
     });

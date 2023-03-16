@@ -27,5 +27,6 @@ export declare function throwMustBeStaticProperty(decoratorName: string, target:
 export declare function throwMustBeModel(decoratorName: string, target: Object, propertyName: string | symbol): never;
 export declare function throwMustBeInstanceProperty(decoratorName: string, target: Object, propertyName: string | symbol): never;
 export declare function throwMustBeMethod(decoratorName: string, target: Object, propertyName: string | symbol): never;
+export declare function throwMustBeAttribute(decoratorName: string, target: Object, propertyName: string | symbol): never;
 export declare function getPropertyName(obj: object, property: string | symbol): string;
 export declare function getClassName(obj: object): string;

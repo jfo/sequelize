@@ -1,5 +1,5 @@
 /// <reference types="node" />
-import { Where } from './sequelize-method';
+import { Where } from '../expression-builders/where.js';
 export declare function isNullish(val: unknown): val is null | undefined;
 export declare function isNodeError(val: unknown): val is NodeJS.ErrnoException;
 /**
@@ -17,12 +17,22 @@ export declare function assertIsErrorWithStringCode(val: unknown): asserts val i
 export declare function isError(val: unknown): val is Error;
 export declare function assertCaughtError(val: unknown): asserts val is Error;
 export declare function isString(val: unknown): val is string;
+export declare function isBigInt(val: unknown): val is bigint;
+export declare function isNumber(val: unknown): val is number;
 /**
  * Works like lodash's isPlainObject, but has better typings
  *
  * @param value The value to check
  */
 export declare function isPlainObject(value: unknown): value is object;
+/**
+ * This function is the same as {@link isPlainObject}, but types the result as a Record / Dictionary.
+ * This function won't be necessary starting with TypeScript 4.9, thanks to improvements to the TS object type,
+ * but we have to keep it until we drop support for TS < 4.9.
+ *
+ * @param value
+ */
+export declare function isDictionary(value: unknown): value is Record<PropertyKey, unknown>;
 /**
  * Returns whether `value` is using the nested syntax for attributes.
  *

@@ -95,6 +95,16 @@ export declare class ModelDefinition {
      * @param attributeName
      */
     getColumnNameLoose(attributeName: string): string;
+    /**
+     * Follows the association path and returns the association at the end of the path.
+     * For instance, say we have a model User, associated to a model Profile, associated to a model Address.
+     *
+     * If we call `User.modelDefinition.getAssociation(['profile', 'address'])`, we will get the association named `address` in the model Profile.
+     * If we call `User.modelDefinition.getAssociation(['profile'])`, we will get the association named `profile` in the model User.
+     *
+     * @param associationPath
+     */
+    getAssociation(associationPath: readonly string[] | string): Association | undefined;
 }
 export declare function registerModelDefinition(model: ModelStatic, modelDefinition: ModelDefinition): void;
 export declare function hasModelDefinition(model: ModelStatic): boolean;

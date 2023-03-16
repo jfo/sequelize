@@ -5,4 +5,5 @@ import { MySqlQueryGenerator } from '../mysql/query-generator.js';
  */
 export declare class MariaDbQueryGeneratorTypeScript extends MySqlQueryGenerator {
     removeIndexQuery(tableName: TableNameOrModel, indexNameOrAttributes: string | string[], options?: RemoveIndexQueryOptions): string;
+    jsonPathExtractionQuery(sqlExpression: string, path: ReadonlyArray<number | string>, unquote: boolean): string;
 }

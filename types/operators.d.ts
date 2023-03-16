@@ -209,6 +209,18 @@ export interface OpTypes {
      */
     readonly is: unique symbol;
     /**
+     * Operator IS NOT
+     *
+     * ```js
+     * [Op.isNot]: null
+     * ```
+     * In SQL
+     * ```sql
+     * IS NOT null
+     * ```
+     */
+    readonly isNot: unique symbol;
+    /**
      * Operator LIKE
      *
      * ```js
@@ -436,14 +448,6 @@ export interface OpTypes {
      * ```
      */
     readonly overlap: unique symbol;
-    /**
-     * Internal placeholder
-     *
-     * ```js
-     * [Op.placeholder]: true
-     * ```
-     */
-    readonly placeholder: unique symbol;
     /**
      * Operator REGEXP (MySQL/PG only)
      *

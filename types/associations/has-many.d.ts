@@ -40,8 +40,8 @@ export declare class HasMany<S extends Model = Model, T extends Model = Model, S
     get sourceKeyAttribute(): SourceKey;
     get sourceKeyField(): string;
     readonly inverse: BelongsTo<T, S, TargetKey, SourceKey>;
-    constructor(secret: symbol, source: ModelStatic<S>, target: ModelStatic<T>, options: NormalizedHasManyOptions<SourceKey, TargetKey>, parent?: Association);
-    static associate<S extends Model, T extends Model, SourceKey extends AttributeNames<S>, TargetKey extends AttributeNames<T>>(secret: symbol, source: ModelStatic<S>, target: ModelStatic<T>, options?: HasManyOptions<SourceKey, TargetKey>, parent?: Association<any>): HasMany<S, T, SourceKey, TargetKey>;
+    constructor(secret: symbol, source: ModelStatic<S>, target: ModelStatic<T>, options: NormalizedHasManyOptions<SourceKey, TargetKey>, parent?: Association, inverse?: BelongsTo<T, S, TargetKey, SourceKey>);
+    static associate<S extends Model, T extends Model, SourceKey extends AttributeNames<S>, TargetKey extends AttributeNames<T>>(secret: symbol, source: ModelStatic<S>, target: ModelStatic<T>, options?: HasManyOptions<SourceKey, TargetKey>, parent?: Association<any>, inverse?: BelongsTo<T, S, TargetKey, SourceKey>): HasMany<S, T, SourceKey, TargetKey>;
     /**
      * Get everything currently associated with this, using an optional where clause.
      *
@@ -234,7 +234,7 @@ export interface HasManyCreateAssociationMixinOptions<T extends Model> extends C
  *
  * @see Model.hasMany
  */
-export type HasManyCreateAssociationMixin<TModel extends Model, TForeignKey extends keyof CreationAttributes<TModel> = never, TScope extends keyof CreationAttributes<TModel> = never> = (values?: Omit<CreationAttributes<TModel>, TForeignKey | TScope>, options?: HasManyCreateAssociationMixinOptions<TModel>) => Promise<TModel>;
+export type HasManyCreateAssociationMixin<Target extends Model, ExcludedAttributes extends keyof CreationAttributes<Target> = never> = (values?: Omit<CreationAttributes<Target>, ExcludedAttributes>, options?: HasManyCreateAssociationMixinOptions<Target>) => Promise<Target>;
 /**
  * The options for the removeAssociation mixin of the hasMany association.
  *
