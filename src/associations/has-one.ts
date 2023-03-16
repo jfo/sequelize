@@ -88,7 +88,6 @@ export class HasOne<
     target: ModelStatic<T>,
     options: NormalizedHasOneOptions<SourceKey, TargetKey>,
     parent?: Association,
-    inverse?: BelongsTo<T, S, TargetKey, SourceKey>,
   ) {
     if (
       options?.sourceKey
@@ -98,12 +97,14 @@ export class HasOne<
     }
 
     if ('keyType' in options) {
-      throw new TypeError(`Option "keyType" has been removed from the BelongsTo's options. Set "foreignKey.type" instead.`);
+      throw new TypeError('Option "keyType" has been removed from the BelongsTo\'s options. Set "foreignKey.type" instead.');
     }
+
+    // TODO: throw is source model has a composite primary key.
 
     super(secret, source, target, options, parent);
 
-    this.inverse = inverse ?? BelongsTo.associate(secret, target, source, removeUndefined({
+    this.inverse = BelongsTo.associate(secret, target, source, removeUndefined({
       as: options.inverse?.as,
       scope: options.inverse?.scope,
       foreignKey: options.foreignKey,
@@ -133,13 +134,12 @@ export class HasOne<
     T extends Model,
     SourceKey extends AttributeNames<S>,
     TargetKey extends AttributeNames<T>,
-  >(
+    >(
     secret: symbol,
     source: ModelStatic<S>,
     target: ModelStatic<T>,
     options: HasOneOptions<SourceKey, TargetKey> = {},
     parent?: Association<any>,
-    inverse?: BelongsTo<T, S, TargetKey, SourceKey>,
   ): HasOne<S, T, SourceKey, TargetKey> {
     return defineAssociation<
       HasOne<S, T, SourceKey, TargetKey>,
@@ -156,7 +156,7 @@ This is because hasOne associations automatically create the corresponding belon
 If having two associations does not make sense (for instance a "spouse" association from user to user), consider using belongsTo instead of hasOne.`);
       }
 
-      return new HasOne(secret, source, target, normalizedOptions, parent, inverse);
+      return new HasOne(secret, source, target, normalizedOptions, parent);
     });
   }
 
@@ -457,10 +457,8 @@ export interface HasOneCreateAssociationMixinOptions<T extends Model>
  *
  * @see Model.hasOne
  */
-export type HasOneCreateAssociationMixin<
-  Target extends Model,
-  ExcludedAttributes extends keyof CreationAttributes<Target> = never,
-> = (
-  values?: Omit<CreationAttributes<Target>, ExcludedAttributes>,
-  options?: HasOneCreateAssociationMixinOptions<Target>
-) => Promise<Target>;
+export type HasOneCreateAssociationMixin<T extends Model> = (
+  // TODO: omit the foreign key from CreationAttributes once we have a way to determine which key is the foreign key in typings
+  values?: CreationAttributes<T>,
+  options?: HasOneCreateAssociationMixinOptions<T>
+) => Promise<T>;

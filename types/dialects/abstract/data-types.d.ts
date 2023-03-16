@@ -3,7 +3,7 @@ import dayjs from 'dayjs';
 import type { Class } from 'type-fest';
 import type { Falsy } from '../../generic/falsy';
 import type { GeoJson, GeoJsonType } from '../../geo-json.js';
-import type { ModelStatic, Rangable } from '../../model.js';
+import type { NormalizedAttributeOptions, ModelStatic, Rangable } from '../../model.js';
 import type { Sequelize } from '../../sequelize.js';
 import type { HstoreRecord } from '../postgres/hstore.js';
 import type { TableNameWithSchema } from './query-interface.js';
@@ -14,8 +14,16 @@ export type DataTypeInstance = AbstractDataType<any>;
 export type DataTypeClass = Class<AbstractDataType<any>>;
 export type DataTypeClassOrInstance = DataTypeInstance | DataTypeClass;
 export type DataType = string | DataTypeClassOrInstance;
-export type NormalizedDataType = string | DataTypeInstance;
-export interface BindParamOptions {
+export interface ToSqlOptions {
+    dialect: AbstractDialect;
+}
+export interface StringifyOptions {
+    dialect: AbstractDialect;
+    operation?: string;
+    timezone?: string | undefined;
+    field?: NormalizedAttributeOptions;
+}
+export interface BindParamOptions extends StringifyOptions {
     bindParam(value: unknown): string;
 }
 export type DataTypeUseContext = {
@@ -75,11 +83,6 @@ AcceptedType> {
     protected _construct<Constructor extends abstract new () => AbstractDataType<any>>(...args: ConstructorParameters<Constructor>): this;
     areValuesEqual(value: AcceptedType, originalValue: AcceptedType): boolean;
     /**
-     * Whether this DataType wishes to handle NULL values itself.
-     * This is almost exclusively used by {@link JSON} and {@link JSONB} which serialize `null` as the JSON string `'null'`.
-     */
-    acceptsNull(): boolean;
-    /**
      * Called when a value is retrieved from the Database, and its DataType is specified.
      * Used to normalize values from the database.
      *
@@ -109,8 +112,9 @@ AcceptedType> {
      * The resulting value will be inlined as-is with no further escaping.
      *
      * @param value The value to escape.
+     * @param options Options.
      */
-    escape(value: AcceptedType): string;
+    escape(value: AcceptedType, options: StringifyOptions): string;
     /**
      * This method is called when {@link AbstractQueryGenerator} needs to add a bind parameter to a query it is building.
      * This method allows for customizing both the SQL to add to the query, and convert the bind parameter value to a DB-compatible value.
@@ -132,15 +136,16 @@ AcceptedType> {
      * will handle escaping.
      *
      * @param value The value to convert.
+     * @param _options Options.
      */
-    toBindableValue(value: AcceptedType): unknown;
+    toBindableValue(value: AcceptedType, _options: StringifyOptions): unknown;
     toString(): string;
     static toString(): string;
     /**
      * Returns a SQL declaration of this data type.
      * e.g. 'VARCHAR(255)', 'TEXT', etc…
      */
-    abstract toSql(): string;
+    abstract toSql(options: ToSqlOptions): string;
     /**
      * Override this method to emit an error or a warning if the Data Type, as it is configured, is not compatible
      * with the current dialect.
@@ -160,7 +165,6 @@ AcceptedType> {
      * Designed to re-use a DataType on another Model.
      */
     clone(): this;
-    withUsageContext(usageContext: DataTypeUseContext): this;
     /**
      * @param usageContext
      * @private
@@ -202,11 +206,11 @@ export declare class STRING extends AbstractDataType<string | Buffer> {
     /** @hidden */
     constructor(...args: [] | [length: number] | [length: number, binary: boolean] | [options: StringTypeOptions]);
     protected _checkOptionSupport(dialect: AbstractDialect): void;
-    toSql(): string;
+    toSql(_options: ToSqlOptions): string;
     validate(value: any): asserts value is string | Buffer;
     get BINARY(): this;
     static get BINARY(): STRING;
-    escape(value: string | Buffer): string;
+    escape(value: string | Buffer, options: StringifyOptions): string;
     toBindableValue(value: string | Buffer): unknown;
 }
 /**
@@ -318,11 +322,11 @@ export declare class BaseNumberDataType<Options extends NumberOptions = NumberOp
     readonly options: Options;
     constructor(options?: Options);
     protected getNumberSqlTypeName(): string;
-    toSql(): string;
+    toSql(_options: ToSqlOptions): string;
     protected _supportsNativeUnsigned(_dialect: AbstractDialect): boolean;
     validate(value: any): asserts value is number;
-    escape(value: AcceptedNumber): string;
-    toBindableValue(num: AcceptedNumber): string | number;
+    escape(value: AcceptedNumber, options: StringifyOptions): string;
+    toBindableValue(num: AcceptedNumber, _options: StringifyOptions): string;
     getBindParamSql(value: AcceptedNumber, options: BindParamOptions): string;
     get UNSIGNED(): this;
     get ZEROFILL(): this;
@@ -340,7 +344,7 @@ export declare class BaseIntegerDataType extends BaseNumberDataType<IntegerOptio
     parseDatabaseValue(value: unknown): unknown;
     protected _checkOptionSupport(dialect: AbstractDialect): void;
     protected _supportsNativeUnsigned(_dialect: AbstractDialect): boolean;
-    toSql(): string;
+    toSql(options: ToSqlOptions): string;
 }
 /**
  * An 8-bit integer.
@@ -460,7 +464,7 @@ export declare class BaseDecimalNumberDataType extends BaseNumberDataType<Decima
     validate(value: any): asserts value is AcceptedNumber;
     isUnconstrained(): boolean;
     protected _checkOptionSupport(dialect: AbstractDialect): void;
-    toSql(): string;
+    toSql(options: ToSqlOptions): string;
 }
 /**
  * A single-floating point number with a 4-byte precision.
@@ -628,8 +632,10 @@ export declare class DATE extends AbstractDataType<AcceptedDate> {
     sanitize(value: unknown): unknown;
     parseDatabaseValue(value: unknown): unknown;
     areValuesEqual(value: AcceptedDate, originalValue: AcceptedDate): boolean;
-    protected _applyTimezone(date: AcceptedDate): dayjs.Dayjs;
-    toBindableValue(date: AcceptedDate): string;
+    protected _applyTimezone(date: AcceptedDate, options: {
+        timezone?: string | undefined;
+    }): dayjs.Dayjs;
+    toBindableValue(date: AcceptedDate, options: StringifyOptions): string;
 }
 /**
  * A date only column (no timestamp)
@@ -649,7 +655,7 @@ export declare class DATEONLY extends AbstractDataType<AcceptedDate> {
     /** @hidden */
     static readonly [kDataTypeIdentifier]: string;
     toSql(): string;
-    toBindableValue(date: AcceptedDate): string;
+    toBindableValue(date: AcceptedDate, _options: StringifyOptions): string;
     sanitize(value: unknown): unknown;
     areValuesEqual(value: AcceptedDate, originalValue: AcceptedDate): boolean;
 }
@@ -692,10 +698,6 @@ export declare class JSON extends AbstractDataType<any> {
     /** @hidden */
     static readonly [kDataTypeIdentifier]: string;
     protected _checkOptionSupport(dialect: AbstractDialect): void;
-    /**
-     * We stringify null too.
-     */
-    acceptsNull(): boolean;
     toBindableValue(value: any): string;
     toSql(): string;
 }
@@ -771,7 +773,7 @@ export declare class BLOB extends AbstractDataType<AcceptedBlob> {
     toSql(): string;
     validate(value: any): void;
     sanitize(value: unknown): unknown;
-    escape(value: string | Buffer): string;
+    escape(value: string | Buffer, options: StringifyOptions): string;
     getBindParamSql(value: AcceptedBlob, options: BindParamOptions): string;
 }
 export interface RangeOptions {
@@ -985,13 +987,13 @@ export declare class ENUM<Member extends string> extends AbstractDataType<Member
     /** @hidden */
     constructor(...args: [options: EnumOptions<Member>] | [members: Member[]] | [...members: Member[]]);
     validate(value: any): asserts value is Member;
-    toSql(): string;
+    toSql(options: ToSqlOptions): string;
 }
 export interface ArrayOptions {
     type: DataTypeClassOrInstance;
 }
 interface NormalizedArrayOptions {
-    type: NormalizedDataType;
+    type: AbstractDataType<any>;
 }
 /**
  * An array of `type`. Only available in Postgres.
@@ -1013,12 +1015,12 @@ export declare class ARRAY<T extends AbstractDataType<any>> extends AbstractData
     /**
      * @param typeOrOptions type of array values
      */
-    constructor(typeOrOptions: DataType | ArrayOptions);
-    toSql(): string;
+    constructor(typeOrOptions: DataTypeClassOrInstance | ArrayOptions);
+    toSql(options: ToSqlOptions): string;
     validate(value: any): void;
     sanitize(value: unknown): unknown;
     parseDatabaseValue(value: unknown[]): unknown;
-    toBindableValue(value: Array<AcceptableTypeOf<T>>): unknown;
+    toBindableValue(value: Array<AcceptableTypeOf<T>>, _options: StringifyOptions): unknown;
     protected _checkOptionSupport(dialect: AbstractDialect): void;
     toDialectDataType(dialect: AbstractDialect): this;
     attachUsageContext(usageContext: DataTypeUseContext): this;

@@ -5,6 +5,6 @@ import type { Sequelize } from '../../sequelize.js';
 export type AssociationType = 'BelongsTo' | 'HasOne' | 'HasMany' | 'BelongsToMany';
 export declare function HasOne<Target extends Model>(target: MaybeForwardedModelStatic<Target>, optionsOrForeignKey: HasOneOptions<string, AttributeNames<Target>> | AttributeNames<Target>): (source: Model, associationName: string | symbol) => void;
 export declare function HasMany<Target extends Model>(target: MaybeForwardedModelStatic<Target>, optionsOrForeignKey: HasManyOptions<string, AttributeNames<Target>> | AttributeNames<Target>): (source: Model, associationName: string | symbol) => void;
-export declare function BelongsTo<SourceKey extends string, Target extends Model>(target: MaybeForwardedModelStatic<Target>, optionsOrForeignKey: BelongsToOptions<SourceKey, AttributeNames<Target>> | SourceKey): (source: Model<{ [key in SourceKey]: any; }, { [key in SourceKey]: any; }>, associationName: string) => void;
+export declare function BelongsTo<SourceKey extends string, Target extends Model>(target: MaybeForwardedModelStatic<Target>, optionsOrForeignKey: BelongsToOptions<SourceKey, AttributeNames<Target>> | SourceKey): (source: Model<{ [key in SourceKey]: unknown; }, { [key in SourceKey]: unknown; }>, associationName: string) => void;
 export declare function BelongsToMany(target: MaybeForwardedModelStatic, options: BelongsToManyOptions): PropertyDecorator;
 export declare function initDecoratedAssociations(model: ModelStatic, sequelize: Sequelize): void;

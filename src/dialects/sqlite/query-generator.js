@@ -2,14 +2,16 @@
 
 import { addTicks, removeTicks } from '../../utils/dialect';
 import { removeNullishValuesFromHash } from '../../utils/format';
-import { EMPTY_OBJECT } from '../../utils/object.js';
 import { defaultValueSchemable } from '../../utils/query-builder-utils';
 import { rejectInvalidOptions } from '../../utils/check';
+import { Cast, Json, SequelizeMethod } from '../../utils/sequelize-method';
+import { underscore } from '../../utils/string';
 import { ADD_COLUMN_QUERY_SUPPORTABLE_OPTIONS, REMOVE_COLUMN_QUERY_SUPPORTABLE_OPTIONS } from '../abstract/query-generator';
 
 const { Transaction } = require('../../transaction');
 const _ = require('lodash');
 const { SqliteQueryGeneratorTypeScript } = require('./query-generator-typescript');
+const { AbstractQueryGenerator } = require('../abstract/query-generator');
 
 const ADD_COLUMN_QUERY_SUPPORTED_OPTIONS = new Set();
 const REMOVE_COLUMN_QUERY_SUPPORTED_OPTIONS = new Set();
@@ -105,17 +107,106 @@ export class SqliteQueryGenerator extends SqliteQueryGeneratorTypeScript {
   addLimitAndOffset(options, model) {
     let fragment = '';
     if (options.limit != null) {
-      fragment += ` LIMIT ${this.escape(options.limit, options)}`;
+      fragment += ` LIMIT ${this.escape(options.limit, undefined, options)}`;
     } else if (options.offset) {
       // limit must be specified if offset is specified.
       fragment += ` LIMIT -1`;
     }
 
     if (options.offset) {
-      fragment += ` OFFSET ${this.escape(options.offset, options)}`;
+      fragment += ` OFFSET ${this.escape(options.offset, undefined, options)}`;
     }
 
     return fragment;
+  }
+
+  booleanValue(value) {
+    return value ? 1 : 0;
+  }
+
+  /**
+   * Check whether the statmement is json function or simple path
+   *
+   * @param   {string}  stmt  The statement to validate
+   * @returns {boolean}       true if the given statement is json function
+   * @throws  {Error}         throw if the statement looks like json function but has invalid token
+   */
+  _checkValidJsonStatement(stmt) {
+    if (typeof stmt !== 'string') {
+      return false;
+    }
+
+    // https://sqlite.org/json1.html
+    const jsonFunctionRegex = /^\s*(json(?:_[a-z]+){0,2})\([^)]*\)/i;
+    const tokenCaptureRegex = /^\s*((?:(["'`])(?:(?!\2).|\2{2})*\2)|[\s\w]+|[()+,.;-])/i;
+
+    let currentIndex = 0;
+    let openingBrackets = 0;
+    let closingBrackets = 0;
+    let hasJsonFunction = false;
+    let hasInvalidToken = false;
+
+    while (currentIndex < stmt.length) {
+      const string = stmt.slice(currentIndex);
+      const functionMatches = jsonFunctionRegex.exec(string);
+      if (functionMatches) {
+        currentIndex += functionMatches[0].indexOf('(');
+        hasJsonFunction = true;
+        continue;
+      }
+
+      const tokenMatches = tokenCaptureRegex.exec(string);
+      if (tokenMatches) {
+        const capturedToken = tokenMatches[1];
+        if (capturedToken === '(') {
+          openingBrackets++;
+        } else if (capturedToken === ')') {
+          closingBrackets++;
+        } else if (capturedToken === ';') {
+          hasInvalidToken = true;
+          break;
+        }
+
+        currentIndex += tokenMatches[0].length;
+        continue;
+      }
+
+      break;
+    }
+
+    // Check invalid json statement
+    hasInvalidToken |= openingBrackets !== closingBrackets;
+    if (hasJsonFunction && hasInvalidToken) {
+      throw new Error(`Invalid json statement: ${stmt}`);
+    }
+
+    // return true if the statement has valid json function
+    return hasJsonFunction;
+  }
+
+  // sqlite can't cast to datetime so we need to convert date values to their ISO strings
+  _toJSONValue(value) {
+    if (value instanceof Date) {
+      return value.toISOString();
+    }
+
+    if (Array.isArray(value) && value[0] instanceof Date) {
+      return value.map(val => val.toISOString());
+    }
+
+    return value;
+  }
+
+  handleSequelizeMethod(smth, tableName, factory, options, prepend) {
+    if (smth instanceof Json) {
+      return super.handleSequelizeMethod(smth, tableName, factory, options, prepend);
+    }
+
+    if (smth instanceof Cast && /timestamp/i.test(smth.type)) {
+      smth.type = 'datetime';
+    }
+
+    return AbstractQueryGenerator.prototype.handleSequelizeMethod.call(this, smth, tableName, factory, options, prepend);
   }
 
   addColumnQuery(table, key, dataType, options) {
@@ -149,7 +240,7 @@ export class SqliteQueryGenerator extends SqliteQueryGeneratorTypeScript {
 
     attrValueHash = removeNullishValuesFromHash(attrValueHash, options.omitNull, options);
 
-    const modelAttributeMap = Object.create(null);
+    const modelAttributeMap = {};
     const values = [];
     const bind = Object.create(null);
     const bindParam = options.bindParam === undefined ? this.bindParam(bind) : options.bindParam;
@@ -164,16 +255,13 @@ export class SqliteQueryGenerator extends SqliteQueryGeneratorTypeScript {
     }
 
     for (const key in attrValueHash) {
-      const value = attrValueHash[key] ?? null;
+      const value = attrValueHash[key];
 
-      const escapedValue = this.escape(value, {
-        replacements: options.replacements,
-        bindParam,
-        type: modelAttributeMap[key]?.type,
-        // TODO: model,
-      });
-
-      values.push(`${this.quoteIdentifier(key)}=${escapedValue}`);
+      if (value instanceof SequelizeMethod || options.bindParam === false) {
+        values.push(`${this.quoteIdentifier(key)}=${this.escape(value, modelAttributeMap && modelAttributeMap[key] || undefined, { context: 'UPDATE', replacements: options.replacements })}`);
+      } else {
+        values.push(`${this.quoteIdentifier(key)}=${this.format(value, modelAttributeMap && modelAttributeMap[key] || undefined, { context: 'UPDATE', replacements: options.replacements }, bindParam)}`);
+      }
     }
 
     let query;
@@ -200,16 +288,17 @@ export class SqliteQueryGenerator extends SqliteQueryGeneratorTypeScript {
     ].join('');
   }
 
-  deleteQuery(tableName, where, options = EMPTY_OBJECT, model) {
+  deleteQuery(tableName, where, options = {}, model) {
     _.defaults(options, this.options);
 
-    let whereClause = this.whereQuery(where, { ...options, model });
+    let whereClause = this.getWhereConditions(where, null, model, options);
+
     if (whereClause) {
-      whereClause = ` ${whereClause}`;
+      whereClause = `WHERE ${whereClause}`;
     }
 
     if (options.limit) {
-      whereClause = `WHERE rowid IN (SELECT rowid FROM ${this.quoteTable(tableName)} ${whereClause} LIMIT ${this.escape(options.limit, options)})`;
+      whereClause = `WHERE rowid IN (SELECT rowid FROM ${this.quoteTable(tableName)} ${whereClause} LIMIT ${this.escape(options.limit, undefined, options)})`;
     }
 
     return `DELETE FROM ${this.quoteTable(tableName)} ${whereClause}`.trim();
@@ -232,7 +321,7 @@ export class SqliteQueryGenerator extends SqliteQueryGeneratorTypeScript {
           // TODO thoroughly check that DataTypes.NOW will properly
           // get populated on all databases as DEFAULT value
           // i.e. mysql requires: DEFAULT CURRENT_TIMESTAMP
-          sql += ` DEFAULT ${this.escape(attribute.defaultValue, { ...options, type: attribute.type })}`;
+          sql += ` DEFAULT ${this.escape(attribute.defaultValue, attribute, options)}`;
         }
 
         if (attribute.unique === true) {
@@ -428,5 +517,26 @@ export class SqliteQueryGenerator extends SqliteQueryGeneratorTypeScript {
    */
   foreignKeyCheckQuery(tableName) {
     return `PRAGMA foreign_key_check(${this.quoteTable(tableName)});`;
+  }
+
+  /**
+   * Generates an SQL query that extract JSON property of given path.
+   *
+   * @param   {string}               column  The JSON column
+   * @param   {string|Array<string>} [path]  The path to extract (optional)
+   * @returns {string}                       The generated sql query
+   * @private
+   */
+  jsonPathExtractionQuery(column, path) {
+    const quotedColumn = this.isIdentifierQuoted(column)
+      ? column
+      : this.quoteIdentifier(column);
+
+    const pathStr = this.escape(['$']
+      .concat(_.toPath(path))
+      .join('.')
+      .replace(/\.(\d+)(?:(?=\.)|$)/g, (__, digit) => `[${digit}]`));
+
+    return `json_extract(${quotedColumn},${pathStr})`;
   }
 }

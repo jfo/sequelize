@@ -1,4 +1,4 @@
-import type { Attributes, Model, ModelStatic, NormalizedAttributeOptions, WhereOptions } from '..';
+import type { Attributes, NormalizedAttributeOptions, Model, ModelStatic, WhereOptions } from '..';
 export type FinderOptions<TAttributes> = {
     attributes?: string[];
     where?: WhereOptions<TAttributes>;
@@ -15,16 +15,40 @@ export type MappedFinderOptions<TAttributes> = Omit<FinderOptions<TAttributes>, 
  */
 export declare function mapFinderOptions<M extends Model, T extends FinderOptions<Attributes<M>>>(options: T, Model: ModelStatic<M>): MappedFinderOptions<Attributes<M>>;
 /**
- * Used to map field names in attributes
+ * Used to map field names in attributes and where conditions.
  *
  * Mutates the "options" parameter.
- *
- * ⚠️ This function does not map the "where" or "having" options, this is handled by QueryGenerator's WHERE generation.
  *
  * @param options
  * @param Model
  */
 export declare function mapOptionFieldNames<M extends Model>(options: FinderOptions<Attributes<M>>, Model: ModelStatic): MappedFinderOptions<Attributes<M>>;
+export declare function mapWhereFieldNames(where: Record<PropertyKey, any>, Model: ModelStatic<Model>): object;
+/**
+ * getComplexKeys
+ *
+ * @param obj
+ * @returns All keys including operators
+ * @private
+ */
+export declare function getComplexKeys(obj: object): Array<string | symbol>;
+/**
+ * getComplexSize
+ *
+ * @param obj
+ * @returns Length of object properties including operators if obj is array returns its length
+ * @private
+ */
+export declare function getComplexSize(obj: object | any[]): number;
+/**
+ * getOperators
+ *
+ * @param obj
+ * @returns All operators properties of obj
+ * @private
+ */
+export declare function getOperators(obj: object): symbol[];
+export declare function combineTableNames(tableName1: string, tableName2: string): string;
 /**
  * Used to map field names in values
  *

@@ -1,5 +1,4 @@
-import type { WhereOptions } from '../dialects/abstract/where-sql-builder-types.js';
-import type { AttributeNames, Attributes, BulkCreateOptions, CreateOptions, CreationAttributes, Filterable, FindAttributeOptions, FindOptions, InstanceDestroyOptions, InstanceUpdateOptions, Model, ModelOptions, ModelStatic, Transactionable } from '../model';
+import type { AttributeNames, Attributes, BulkCreateOptions, CreateOptions, CreationAttributes, Filterable, FindAttributeOptions, FindOptions, InstanceDestroyOptions, InstanceUpdateOptions, Model, ModelOptions, ModelStatic, Transactionable, WhereOptions } from '../model';
 import type { AllowArray } from '../utils/types.js';
 import type { Association, AssociationOptions, AssociationScope, ForeignKeyOptions, MultiAssociationAccessors, MultiAssociationOptions, NormalizedAssociationOptions } from './base';
 import { MultiAssociation } from './base';

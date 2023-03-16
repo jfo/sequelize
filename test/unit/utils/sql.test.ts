@@ -1,5 +1,4 @@
 import { expect } from 'chai';
-import { sql as sqlTag } from '@sequelize/core';
 import { injectReplacements, mapBindParameters } from '@sequelize/core/_non-semver-use-at-your-own-risk_/utils/sql.js';
 import {
   createSequelizeInstance,
@@ -9,8 +8,6 @@ import {
   toHaveProperties,
   toMatchSql,
 } from '../../support';
-
-const { list } = sqlTag;
 
 const dialect = sequelize.dialect;
 
@@ -64,7 +61,7 @@ describe('mapBindParameters', () => {
     });
   });
 
-  it('parses bind parameters following JSON extraction', () => {
+  it('parses bind parameters following JSONB indexing', () => {
     const { sql } = mapBindParameters(`SELECT * FROM users WHERE json_col->>$key`, dialect);
 
     expectsql(sql, {
@@ -394,7 +391,7 @@ describe('injectReplacements (named replacements)', () => {
     });
   });
 
-  it('parses named replacements following JSON extraction', () => {
+  it('parses named replacements following JSONB indexing', () => {
     const sql = injectReplacements(`SELECT * FROM users WHERE json_col->>:key`, dialect, {
       key: 'name',
     });
@@ -611,7 +608,7 @@ describe('injectReplacements (positional replacements)', () => {
     });
   });
 
-  it('parses named replacements following JSON extraction', () => {
+  it('parses named replacements following JSONB indexing', () => {
     const sql = injectReplacements(`SELECT * FROM users WHERE json_col->>?`, dialect, ['name']);
 
     expectsql(sql, {
@@ -673,15 +670,7 @@ describe('injectReplacements (positional replacements)', () => {
     });
   });
 
-  it('does not consider the token to be a replacement if it is in an unnamed $ quoted string', () => {
-    const sql = injectReplacements(`SELECT $$ ? $$`, dialect, [1]);
-
-    expectsql(sql, {
-      default: `SELECT $$ ? $$`,
-    });
-  });
-
-  it('does consider the token to be a replacement if it is located after a $ quoted string', () => {
+  it('does consider the token to be a bind parameter if it is located after a $ quoted string', () => {
     const sql = injectReplacements(`SELECT $$ abc $$ AS string FROM users WHERE id = ?`, dialect, [1]);
 
     expectsql(sql, {
@@ -800,13 +789,11 @@ SELECT * FROM users WHERE id = '\\\\\\' ?' OR id = ?`),
     expect(injectReplacements('foo = ?', dialect, [0])).to.equal('foo = 0');
   });
 
-  it('formats arrays as an expression when they are wrapped with list(), instead of an ARRAY data type', async () => {
-    const sql = injectReplacements('INSERT INTO users (username, email, created_at, updated_at) VALUES ?;', dialect, [
-      [
-        list(['john', 'john@gmail.com', '2012-01-01 10:10:10', '2012-01-01 10:10:10']),
-        list(['michael', 'michael@gmail.com', '2012-01-01 10:10:10', '2012-01-01 10:10:10']),
-      ],
-    ]);
+  it('formats arrays as an expression instead of an ARRAY data type', async () => {
+    const sql = injectReplacements('INSERT INTO users (username, email, created_at, updated_at) VALUES ?;', dialect, [[
+      ['john', 'john@gmail.com', '2012-01-01 10:10:10', '2012-01-01 10:10:10'],
+      ['michael', 'michael@gmail.com', '2012-01-01 10:10:10', '2012-01-01 10:10:10'],
+    ]]);
 
     expectsql(sql, {
       default: `

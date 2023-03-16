@@ -221,11 +221,11 @@ export class BelongsTo<
 
       switch (options.inverse.type) {
         case 'hasMany':
-          HasMany.associate(secret, target, source, passDown, this, this);
+          HasMany.associate(secret, target, source, passDown, this);
           break;
 
         case 'hasOne':
-          HasOne.associate(secret, target, source, passDown, this, this);
+          HasOne.associate(secret, target, source, passDown, this);
           break;
 
         default:
@@ -316,9 +316,7 @@ export class BelongsTo<
 
     if (instances.length > 1) {
       where[this.targetKey] = {
-        [Op.in]: instances.map(instance => instance.get(this.foreignKey))
-          // only fetch entities that actually have a foreign key set
-          .filter(foreignKey => foreignKey != null),
+        [Op.in]: instances.map(_instance => _instance.get(this.foreignKey)),
       };
     } else {
       const foreignKeyValue = instances[0].get(this.foreignKey);

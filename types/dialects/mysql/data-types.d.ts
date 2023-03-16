@@ -1,7 +1,7 @@
 import type { Falsy } from '../../generic/falsy.js';
 import type { GeoJson } from '../../geo-json.js';
 import * as BaseTypes from '../abstract/data-types.js';
-import type { AcceptedDate, BindParamOptions } from '../abstract/data-types.js';
+import type { AcceptedDate, StringifyOptions, ToSqlOptions, BindParamOptions } from '../abstract/data-types.js';
 export declare class FLOAT extends BaseTypes.FLOAT {
     protected getNumberSqlTypeName(): string;
     protected _supportsNativeUnsigned(): boolean;
@@ -38,23 +38,19 @@ export declare class BOOLEAN extends BaseTypes.BOOLEAN {
     toBindableValue(value: boolean | Falsy): unknown;
 }
 export declare class DATE extends BaseTypes.DATE {
-    toBindableValue(date: AcceptedDate): string;
+    toBindableValue(date: AcceptedDate, options: StringifyOptions): string;
     sanitize(value: unknown, options?: {
         timezone?: string;
     }): unknown;
-}
-export declare class JSON extends BaseTypes.JSON {
-    escape(value: any): string;
-    getBindParamSql(value: any, options: BindParamOptions): string;
 }
 export declare class UUID extends BaseTypes.UUID {
     toSql(): string;
 }
 export declare class GEOMETRY extends BaseTypes.GEOMETRY {
-    toBindableValue(value: GeoJson): string;
+    toBindableValue(value: GeoJson, options: StringifyOptions): string;
     getBindParamSql(value: GeoJson, options: BindParamOptions): string;
     toSql(): string;
 }
 export declare class ENUM<Member extends string> extends BaseTypes.ENUM<Member> {
-    toSql(): string;
+    toSql(options: ToSqlOptions): string;
 }

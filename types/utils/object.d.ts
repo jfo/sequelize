@@ -1,6 +1,4 @@
 import type { MapView } from './immutability.js';
-export declare const EMPTY_OBJECT: any;
-export declare const EMPTY_ARRAY: readonly never[];
 /**
  * Deeply merges object `b` into `a`.
  * Mutates `a`.

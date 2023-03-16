@@ -41,8 +41,8 @@ export declare class HasOne<S extends Model = Model, T extends Model = Model, So
     get sourceKeyAttribute(): SourceKey;
     readonly inverse: BelongsTo<T, S, TargetKey, SourceKey>;
     readonly accessors: SingleAssociationAccessors;
-    constructor(secret: symbol, source: ModelStatic<S>, target: ModelStatic<T>, options: NormalizedHasOneOptions<SourceKey, TargetKey>, parent?: Association, inverse?: BelongsTo<T, S, TargetKey, SourceKey>);
-    static associate<S extends Model, T extends Model, SourceKey extends AttributeNames<S>, TargetKey extends AttributeNames<T>>(secret: symbol, source: ModelStatic<S>, target: ModelStatic<T>, options?: HasOneOptions<SourceKey, TargetKey>, parent?: Association<any>, inverse?: BelongsTo<T, S, TargetKey, SourceKey>): HasOne<S, T, SourceKey, TargetKey>;
+    constructor(secret: symbol, source: ModelStatic<S>, target: ModelStatic<T>, options: NormalizedHasOneOptions<SourceKey, TargetKey>, parent?: Association);
+    static associate<S extends Model, T extends Model, SourceKey extends AttributeNames<S>, TargetKey extends AttributeNames<T>>(secret: symbol, source: ModelStatic<S>, target: ModelStatic<T>, options?: HasOneOptions<SourceKey, TargetKey>, parent?: Association<any>): HasOne<S, T, SourceKey, TargetKey>;
     /**
      * Get the associated instance.
      *
@@ -174,4 +174,4 @@ export interface HasOneCreateAssociationMixinOptions<T extends Model> extends Om
  *
  * @see Model.hasOne
  */
-export type HasOneCreateAssociationMixin<Target extends Model, ExcludedAttributes extends keyof CreationAttributes<Target> = never> = (values?: Omit<CreationAttributes<Target>, ExcludedAttributes>, options?: HasOneCreateAssociationMixinOptions<Target>) => Promise<Target>;
+export type HasOneCreateAssociationMixin<T extends Model> = (values?: CreationAttributes<T>, options?: HasOneCreateAssociationMixinOptions<T>) => Promise<T>;

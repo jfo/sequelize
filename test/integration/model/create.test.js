@@ -530,32 +530,39 @@ describe(Support.getTestDialectTeaser('Model'), () => {
           username: 'gottlieb',
         });
 
-        return Promise.all([
-          (async () => {
-            const error = await expect(User.findOrCreate({
+        return Promise.all([(async () => {
+          try {
+            await User.findOrCreate({
               where: {
                 objectId: 'asdasdasd',
               },
               defaults: {
                 username: 'gottlieb',
               },
-            })).to.be.rejectedWith(Sequelize.UniqueConstraintError);
+            });
 
+            throw new Error('I should have ben rejected');
+          } catch (error) {
+            expect(error instanceof Sequelize.UniqueConstraintError).to.be.ok;
             expect(error.fields).to.be.ok;
-          })(),
-          (async () => {
-            const error = await expect(User.findOrCreate({
+          }
+        })(), (async () => {
+          try {
+            await User.findOrCreate({
               where: {
                 objectId: 'asdasdasd',
               },
               defaults: {
                 username: 'gottlieb',
               },
-            })).to.be.rejectedWith(Sequelize.UniqueConstraintError);
+            });
 
+            throw new Error('I should have ben rejected');
+          } catch (error) {
+            expect(error instanceof Sequelize.UniqueConstraintError).to.be.ok;
             expect(error.fields).to.be.ok;
-          })(),
-        ]);
+          }
+        })()]);
       });
 
       it('works without a transaction', async function () {
@@ -849,17 +856,13 @@ describe(Support.getTestDialectTeaser('Model'), () => {
 
     it('is possible to use casting when creating an instance', async function () {
       const type = ['mysql', 'mariadb'].includes(dialectName) ? 'signed' : 'integer';
-      const bindParam = dialectName === 'postgres' ? '$1'
-        : dialectName === 'sqlite' ? '$sequelize_1'
-        : dialectName === 'mssql' ? '@sequelize_1'
-        : '?';
       let match = false;
 
       const user = await this.User.create({
         intVal: this.sequelize.cast('1', type),
       }, {
         logging(sql) {
-          expect(sql).to.include(`CAST(${bindParam} AS ${type.toUpperCase()})`);
+          expect(sql).to.match(new RegExp(`CAST\\(N?'1' AS ${type.toUpperCase()}\\)`));
           match = true;
         },
       });

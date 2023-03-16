@@ -1,7 +1,7 @@
 {
   "version": 3,
   "sources": ["../../../src/dialects/mariadb/data-types.ts"],
-  "sourcesContent": ["export { BIGINT, DATE, BOOLEAN, DECIMAL, DOUBLE, FLOAT, ENUM, INTEGER, GEOMETRY, MEDIUMINT, SMALLINT, UUID, TINYINT, REAL } from '../mysql/data-types.js';\n\n// Unlike MySQL, MariaDB does not need to cast JSON values when comparing them to other values,\n// so we do not need that override.\nexport { JSON } from '../abstract/data-types.js';\n"],
-  "mappings": ";;;;;;;;;;;;;;;;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA,wBAAiI;AAIjI,IAAAA,qBAAqB;",
-  "names": ["import_data_types"]
+  "sourcesContent": ["export * from '../mysql/data-types.js';\n"],
+  "mappings": ";;;;;;;;;;;;;;;AAAA;AAAA;AAAA,+BAAc,mCAAd;",
+  "names": []
 }

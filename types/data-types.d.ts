@@ -60,11 +60,11 @@ export declare const JSONB: typeof DataTypes.JSONB & (() => DataTypes.JSONB);
 /** This is a simple wrapper to make the DataType constructable without `new`. See {@link <internal>~VIRTUAL} for all available options. */
 export declare const VIRTUAL: typeof DataTypes.VIRTUAL & ((...args: [returnType?: DataTypes.DataTypeClassOrInstance, attributeDependencies?: string[]] | [options?: DataTypes.VirtualOptions]) => DataTypes.VIRTUAL<unknown>);
 /** This is a simple wrapper to make the DataType constructable without `new`. See {@link <internal>~ARRAY} for all available options. */
-export declare const ARRAY: typeof DataTypes.ARRAY & ((typeOrOptions: DataTypes.DataType | DataTypes.ArrayOptions) => DataTypes.ARRAY<DataTypes.AbstractDataType<any>>);
+export declare const ARRAY: typeof DataTypes.ARRAY & ((typeOrOptions: DataTypes.DataTypeClassOrInstance | DataTypes.ArrayOptions) => DataTypes.ARRAY<DataTypes.AbstractDataType<any>>);
 /** This is a simple wrapper to make the DataType constructable without `new`. See {@link <internal>~ENUM} for all available options. */
 export declare const ENUM: typeof DataTypes.ENUM & ((...args: string[] | [options: DataTypes.EnumOptions<string>] | [members: string[]]) => DataTypes.ENUM<string>);
 /** This is a simple wrapper to make the DataType constructable without `new`. See {@link <internal>~RANGE} for all available options. */
-export declare const RANGE: typeof DataTypes.RANGE & ((subtypeOrOptions: DataTypes.DataTypeClassOrInstance | DataTypes.RangeOptions) => DataTypes.RANGE<DataTypes.DATE | DataTypes.BaseNumberDataType<DataTypes.NumberOptions> | DataTypes.DATEONLY>);
+export declare const RANGE: typeof DataTypes.RANGE & ((subtypeOrOptions: DataTypes.DataTypeClassOrInstance | DataTypes.RangeOptions) => DataTypes.RANGE<DataTypes.DATE | DataTypes.DATEONLY | DataTypes.BaseNumberDataType<DataTypes.NumberOptions>>);
 /** This is a simple wrapper to make the DataType constructable without `new`. See {@link <internal>~REAL} for all available options. */
 export declare const REAL: typeof DataTypes.REAL & ((...args: [] | [precision: number] | [precision: number, scale: number] | [options: DataTypes.DecimalNumberOptions]) => DataTypes.REAL);
 /** This is a simple wrapper to make the DataType constructable without `new`. See {@link <internal>~DOUBLE} for all available options. */

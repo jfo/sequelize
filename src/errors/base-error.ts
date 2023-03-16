@@ -66,11 +66,13 @@ export class BaseError extends Error {
   }
 }
 
+const indentation = '  ';
+
 function addCause(message: string = '', cause?: unknown) {
   let out = message;
 
   if (cause) {
-    out += `\nCaused by: ${getErrorMessage(cause)}`;
+    out += `\n\n${indentation}Caused by:\n${indentation}${getErrorMessage(cause).replace(/\n/g, `\n${indentation}`)}`;
   }
 
   return out;

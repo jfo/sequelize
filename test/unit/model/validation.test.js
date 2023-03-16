@@ -346,10 +346,6 @@ describe(Support.getTestDialectTeaser('InstanceValidator'), () => {
 
       describe('findAll', () => {
         it('should allow $in', async () => {
-          if (!dialect.supports.dataTypes.ARRAY) {
-            return;
-          }
-
           await expect(User.findAll({
             where: {
               name: {
@@ -361,10 +357,10 @@ describe(Support.getTestDialectTeaser('InstanceValidator'), () => {
           })).not.to.be.rejected;
         });
 
-        it('should allow $like for uuid if cast', async () => {
+        it('should allow $like for uuid', async () => {
           await expect(User.findAll({
             where: {
-              'uid::text': {
+              uid: {
                 [Op.like]: '12345678%',
               },
             },

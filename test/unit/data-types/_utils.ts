@@ -7,7 +7,7 @@ export const testDataTypeSql = createTester((it, description: string, dataType: 
     let result: Error | string;
 
     try {
-      result = typeof dataType === 'string' ? dataType : sequelize.normalizeDataType(dataType).toSql();
+      result = typeof dataType === 'string' ? dataType : sequelize.normalizeDataType(dataType).toSql({ dialect: sequelize.dialect });
     } catch (error) {
       assert(error instanceof Error);
       result = error;

@@ -61,27 +61,12 @@ export function disableDatabaseResetForSuite() {
   });
 }
 
-let databaseTruncateEnabled = false;
-export function enableTruncateDatabaseForSuite() {
-  disableDatabaseResetForSuite();
-
-  before(async () => {
-    databaseTruncateEnabled = true;
-  });
-
-  after(() => {
-    databaseTruncateEnabled = false;
-  });
-}
-
 beforeEach(async () => {
-  if (!databaseResetDisabled) {
-    await Support.clearDatabase(Support.sequelize);
+  if (databaseResetDisabled) {
+    return;
   }
 
-  if (databaseTruncateEnabled) {
-    await Support.sequelize.truncate({ cascade: true });
-  }
+  await Support.clearDatabase(Support.sequelize);
 });
 
 afterEach(async function checkRunningQueries() {

@@ -2,7 +2,6 @@
 
 import omit from 'lodash/omit';
 import { AbstractDataType } from './dialects/abstract/data-types';
-import { BaseSqlExpression } from './expression-builders/base-sql-expression.js';
 import { intersects } from './utils/array';
 import {
   noDoubleNestedGroup,
@@ -13,21 +12,23 @@ import {
 } from './utils/deprecations';
 import { toDefaultValue } from './utils/dialect';
 import {
+  getComplexKeys,
   mapFinderOptions,
   mapOptionFieldNames,
   mapValueFieldNames,
+  mapWhereFieldNames,
 } from './utils/format';
 import { every, find } from './utils/iterators';
-import { cloneDeep, mergeDefaults, defaults, flattenObjectDeep, getObjectFromMap, EMPTY_OBJECT } from './utils/object';
+import { cloneDeep, mergeDefaults, defaults, flattenObjectDeep, getObjectFromMap } from './utils/object';
 import { isWhereEmpty } from './utils/query-builder-utils';
 import { ModelTypeScript } from './model-typescript';
 import { isModelStatic, isSameInitialModel } from './utils/model-utils';
+import { SequelizeMethod } from './utils/sequelize-method';
 import { Association, BelongsTo, BelongsToMany, HasMany, HasOne } from './associations';
 import { AssociationSecret } from './associations/helpers';
 import { Op } from './operators';
 import { _validateIncludedElements, combineIncludes, setTransactionFromCls, throwInvalidInclude } from './model-internals';
 import { QueryTypes } from './query-types';
-import { getComplexKeys } from './utils/where.js';
 
 const assert = require('node:assert');
 const NodeUtil = require('node:util');
@@ -146,7 +147,7 @@ export class Model extends ModelTypeScript {
         ? _.mapValues(getObjectFromMap(modelDefinition.defaultValues), getDefaultValue => {
           const value = getDefaultValue();
 
-          return value && value instanceof BaseSqlExpression ? value : _.cloneDeep(value);
+          return value && value instanceof SequelizeMethod ? value : _.cloneDeep(value);
         })
         : Object.create(null);
 
@@ -164,23 +165,23 @@ export class Model extends ModelTypeScript {
       const { createdAt: createdAtAttrName, updatedAt: updatedAtAttrName, deletedAt: deletedAtAttrName } = modelDefinition.timestampAttributeNames;
 
       if (createdAtAttrName && defaults[createdAtAttrName]) {
-        this.dataValues[createdAtAttrName] = toDefaultValue(defaults[createdAtAttrName]);
+        this.dataValues[createdAtAttrName] = toDefaultValue(defaults[createdAtAttrName], this.sequelize.dialect);
         delete defaults[createdAtAttrName];
       }
 
       if (updatedAtAttrName && defaults[updatedAtAttrName]) {
-        this.dataValues[updatedAtAttrName] = toDefaultValue(defaults[updatedAtAttrName]);
+        this.dataValues[updatedAtAttrName] = toDefaultValue(defaults[updatedAtAttrName], this.sequelize.dialect);
         delete defaults[updatedAtAttrName];
       }
 
       if (deletedAtAttrName && defaults[deletedAtAttrName]) {
-        this.dataValues[deletedAtAttrName] = toDefaultValue(defaults[deletedAtAttrName]);
+        this.dataValues[deletedAtAttrName] = toDefaultValue(defaults[deletedAtAttrName], this.sequelize.dialect);
         delete defaults[deletedAtAttrName];
       }
 
       for (const key in defaults) {
         if (values[key] === undefined) {
-          this.set(key, toDefaultValue(defaults[key]), { raw: true });
+          this.set(key, toDefaultValue(defaults[key], this.sequelize.dialect), { raw: true });
           delete values[key];
         }
       }
@@ -1394,7 +1395,7 @@ ${associationOwner._getAssociationDebugList()}`);
    */
   static async findByPk(param, options) {
     // return Promise resolved with null if no arguments are passed
-    if (param == null) {
+    if ([null, undefined].includes(param)) {
       return null;
     }
 
@@ -1402,7 +1403,6 @@ ${associationOwner._getAssociationDebugList()}`);
 
     if (typeof param === 'number' || typeof param === 'bigint' || typeof param === 'string' || Buffer.isBuffer(param)) {
       options.where = {
-        // TODO: support composite primary keys
         [this.primaryKeyAttribute]: param,
       };
     } else {
@@ -2447,7 +2447,7 @@ ${associationOwner._getAssociationDebugList()}`);
       throw new Error('Missing where or truncate attribute in the options parameter of model.destroy.');
     }
 
-    if (!options.truncate && !_.isPlainObject(options.where) && !Array.isArray(options.where) && !(options.where instanceof BaseSqlExpression)) {
+    if (!options.truncate && !_.isPlainObject(options.where) && !Array.isArray(options.where) && !(options.where instanceof SequelizeMethod)) {
       throw new Error('Expected plain object, array or sequelize method in the options.where parameter of model.destroy.');
     }
 
@@ -2807,7 +2807,7 @@ ${associationOwner._getAssociationDebugList()}`);
 
     const attribute = attributes.get(attributeName);
     if (attribute?.defaultValue) {
-      return toDefaultValue(attribute.defaultValue);
+      return toDefaultValue(attribute.defaultValue, this.sequelize.dialect);
     }
   }
 
@@ -3050,7 +3050,7 @@ Instead of specifying a Model, either:
 
   static _optionsMustContainWhere(options) {
     assert(options && options.where, 'Missing where attribute in the options parameter');
-    assert(_.isPlainObject(options.where) || Array.isArray(options.where) || options.where instanceof BaseSqlExpression,
+    assert(_.isPlainObject(options.where) || Array.isArray(options.where) || options.where instanceof SequelizeMethod,
       'Expected plain object, array or sequelize method in the options.where parameter');
   }
 
@@ -3081,7 +3081,7 @@ Instead of specifying a Model, either:
       );
     }
 
-    const where = Object.create(null);
+    const where = {};
 
     for (const attributeName of modelDefinition.primaryKeysAttributeNames) {
       const attrVal = this.get(attributeName, { raw: true });
@@ -3101,7 +3101,7 @@ Instead of specifying a Model, either:
       where[versionAttr] = this.get(versionAttr, { raw: true });
     }
 
-    return where;
+    return mapWhereFieldNames(where, this.constructor);
   }
 
   toString() {
@@ -3156,7 +3156,7 @@ Instead of specifying a Model, either:
       attributeName = undefined;
     }
 
-    options = options ?? EMPTY_OBJECT;
+    options = options || {};
 
     const { attributes, attributesWithGetters } = this.constructor.modelDefinition;
 
@@ -3371,7 +3371,7 @@ Instead of specifying a Model, either:
       if (
         !options.comesFromDatabase
         && value != null
-        && !(value instanceof BaseSqlExpression)
+        && !(value instanceof SequelizeMethod)
         && attributeType
         // "type" can be a string
         && attributeType instanceof AbstractDataType
@@ -3384,7 +3384,7 @@ Instead of specifying a Model, either:
         !options.raw
         && (
           // True when sequelize method
-          value instanceof BaseSqlExpression
+          value instanceof SequelizeMethod
           // Otherwise, check for data type type comparators
           || ((value != null && attributeType && attributeType instanceof AbstractDataType) && !attributeType.areValuesEqual(value, originalValue, options))
           || ((value == null || !attributeType || !(attributeType instanceof AbstractDataType)) && !_.isEqual(value, originalValue))
@@ -3887,7 +3887,7 @@ Instead of specifying a Model, either:
       throw new Error('You attempted to update an instance that is not persisted.');
     }
 
-    options = options ?? EMPTY_OBJECT;
+    options = options || {};
     if (Array.isArray(options)) {
       options = { fields: options };
     }

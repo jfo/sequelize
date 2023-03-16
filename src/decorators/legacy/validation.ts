@@ -66,13 +66,13 @@ export const ModelValidator = createOptionallyParameterizedPropertyDecorator<und
     const targetClass = isStatic ? target : target.constructor;
 
     if (!isModelStatic(targetClass)) {
-      throwMustBeModel('ModelValidator', target, propertyName);
+      throwMustBeModel('ValidateModel', target, propertyName);
     }
 
     // @ts-expect-error -- it's normal to get any here
     const property = target[propertyName];
     if (typeof property !== 'function') {
-      throwMustBeMethod('ModelValidator', target, propertyName);
+      throwMustBeMethod('ValidateModel', target, propertyName);
     }
 
     const validator = isStatic ? function validate() {

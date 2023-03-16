@@ -1,4 +1,5 @@
-export declare function toDefaultValue(value: unknown): unknown;
+import type { AbstractDialect } from '../dialects/abstract';
+export declare function toDefaultValue(value: unknown, dialect: AbstractDialect): unknown;
 /**
  * @deprecated use {@link AbstractDialect#TICK_CHAR_LEFT} and {@link AbstractDialect#TICK_CHAR_RIGHT},
  * or {@link AbstractQueryGenerator#quoteIdentifier}

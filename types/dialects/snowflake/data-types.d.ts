@@ -1,9 +1,9 @@
 import * as BaseTypes from '../abstract/data-types.js';
-import type { AcceptedDate } from '../abstract/data-types.js';
+import type { AcceptedDate, StringifyOptions } from '../abstract/data-types.js';
 import type { AbstractDialect } from '../abstract/index.js';
 export declare class DATE extends BaseTypes.DATE {
     toSql(): string;
-    toBindableValue(date: AcceptedDate): string;
+    toBindableValue(date: AcceptedDate, options: StringifyOptions): string;
 }
 export declare class UUID extends BaseTypes.UUID {
     toSql(): string;
@@ -15,7 +15,7 @@ export declare class TEXT extends BaseTypes.TEXT {
     toSql(): string;
 }
 export declare class JSON extends BaseTypes.JSON {
-    escape(value: unknown): string;
+    escape(value: any, options: StringifyOptions): string;
 }
 /** @deprecated */
 export declare class REAL extends BaseTypes.REAL {

@@ -9,7 +9,7 @@ describe('QueryGenerator#bulkInsertQuery', () => {
   }, { timestamps: false });
 
   it('parses named replacements in literals', async () => {
-    const sql = queryGenerator.bulkInsertQuery(User.table, [{
+    const sql = queryGenerator.bulkInsertQuery(User.tableName, [{
       firstName: literal(':injection'),
     }], {
       replacements: {

@@ -943,7 +943,7 @@ export class AbstractQueryInterface extends AbstractQueryInterfaceTypeScript {
 
     const modelDefinition = instance?.constructor.modelDefinition;
 
-    options = { ...options, model: instance?.constructor };
+    options = { ...options };
     options.hasTrigger = modelDefinition?.options.hasTrigger;
 
     const { query, bind } = this.queryGenerator.updateQuery(
@@ -1110,11 +1110,11 @@ export class AbstractQueryInterface extends AbstractQueryInterfaceTypeScript {
     return this.#arithmeticQuery('-', model, tableName, where, incrementAmountsByField, extraAttributesToBeUpdated, options);
   }
 
-  async #arithmeticQuery(operator, model, tableName, where, incrementAmountsByAttribute, extraAttributesToBeUpdated, options) {
+  async #arithmeticQuery(operator, model, tableName, where, incrementAmountsByField, extraAttributesToBeUpdated, options) {
     options = cloneDeep(options);
     options.model = model;
 
-    const sql = this.queryGenerator.arithmeticQuery(operator, tableName, where, incrementAmountsByAttribute, extraAttributesToBeUpdated, options);
+    const sql = this.queryGenerator.arithmeticQuery(operator, tableName, where, incrementAmountsByField, extraAttributesToBeUpdated, options);
 
     options.type = QueryTypes.UPDATE;
 

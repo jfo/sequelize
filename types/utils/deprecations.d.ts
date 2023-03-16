@@ -1,4 +1,6 @@
 export declare const noTrueLogging: () => void;
+export declare const noStringOperators: () => void;
+export declare const noBoolOperatorAliases: () => void;
 export declare const noDoubleNestedGroup: () => void;
 export declare const unsupportedEngine: () => void;
 export declare const useErrorCause: () => void;
@@ -15,5 +17,3 @@ export declare const columnToAttribute: () => void;
 export declare const fieldToColumn: () => void;
 export declare const noModelTableName: () => void;
 export declare const noNewModel: () => void;
-export declare const noOpCol: () => void;
-export declare const noSqlJson: () => void;

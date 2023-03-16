@@ -8,8 +8,6 @@ const expect = chai.expect;
 const sinon = require('sinon');
 
 const current = Support.sequelize;
-const { dialect } = current;
-const dialectName = dialect.name;
 
 describe(Support.getTestDialectTeaser('Model'), () => {
   describe('paranoid', () => {
@@ -95,7 +93,7 @@ describe(Support.getTestDialectTeaser('Model'), () => {
               type: DataTypes.STRING,
             },
             data: {
-              type: dialectName === 'postgres' ? DataTypes.JSONB : DataTypes.JSON,
+              type: DataTypes.JSON,
             },
             deletedAt: {
               type: DataTypes.DATE,

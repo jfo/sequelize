@@ -1,11 +1,10 @@
 'use strict';
 
-import { Col } from '../../expression-builders/col.js';
-import { Literal } from '../../expression-builders/literal.js';
 import { rejectInvalidOptions } from '../../utils/check';
 import { addTicks, removeTicks } from '../../utils/dialect';
 import { joinSQLFragments } from '../../utils/join-sql-fragments';
 import { defaultValueSchemable } from '../../utils/query-builder-utils';
+import { Col, Literal } from '../../utils/sequelize-method';
 import { generateIndexName, underscore } from '../../utils/string';
 import { attributeTypeToSql, normalizeDataType } from '../abstract/data-types-utils';
 import {
@@ -419,12 +418,7 @@ export class MsSqlQueryGenerator extends MsSqlQueryGeneratorTypeScript {
     if (allAttributes.length > 0) {
       for (const attrValueHash of attrValueHashes) {
         tuples.push(`(${
-          allAttributes.map(key => {
-            // TODO: pass "type"
-            // TODO: bindParam
-            // TODO: pass "model"
-            return this.escape(attrValueHash[key] ?? null, options);
-          }).join(',')
+          allAttributes.map(key => this.escape(attrValueHash[key], undefined, options)).join(',')
         })`);
       }
 
@@ -462,7 +456,6 @@ export class MsSqlQueryGenerator extends MsSqlQueryGeneratorTypeScript {
   }
 
   upsertQuery(tableName, insertValues, updateValues, where, model, options) {
-    // TODO: support TableNameWithSchema objects
     const targetTableAlias = this.quoteTable(`${tableName}_target`);
     const sourceTableAlias = this.quoteTable(`${tableName}_source`);
     const primaryKeysColumns = [];
@@ -499,10 +492,7 @@ export class MsSqlQueryGenerator extends MsSqlQueryGeneratorTypeScript {
     const updateKeys = Object.keys(updateValues);
     const insertKeys = Object.keys(insertValues);
     const insertKeysQuoted = insertKeys.map(key => this.quoteIdentifier(key)).join(', ');
-    const insertValuesEscaped = insertKeys.map(key => {
-      // TODO: pass "model", "type" and "bindParam" options
-      return this.escape(insertValues[key], options);
-    }).join(', ');
+    const insertValuesEscaped = insertKeys.map(key => this.escape(insertValues[key], undefined, options)).join(', ');
     const sourceTableQuery = `VALUES(${insertValuesEscaped})`; // Virtual Table
     let joinCondition;
 
@@ -551,9 +541,7 @@ export class MsSqlQueryGenerator extends MsSqlQueryGeneratorTypeScript {
       // Search for primary key attribute in clauses -- Model can have two separate unique keys
       for (const key in clauses) {
         const keys = Object.keys(clauses[key]);
-        const columnName = modelDefinition.getColumnNameLoose(keys[0]);
-
-        if (primaryKeysColumns.includes(columnName)) {
+        if (primaryKeysColumns.includes(keys[0])) {
           joinCondition = getJoinSnippet(primaryKeysColumns).join(' AND ');
           break;
         }
@@ -591,16 +579,14 @@ export class MsSqlQueryGenerator extends MsSqlQueryGeneratorTypeScript {
 
   deleteQuery(tableName, where, options = {}, model) {
     const table = this.quoteTable(tableName);
-
-    const escapeOptions = { ...options, model };
-    const whereClause = this.whereQuery(where, escapeOptions);
+    const whereClause = this.getWhereConditions(where, null, model, options);
 
     return joinSQLFragments([
       'DELETE',
-      options.limit && `TOP(${this.escape(options.limit, escapeOptions)})`,
+      options.limit && `TOP(${this.escape(options.limit, undefined, options)})`,
       'FROM',
       table,
-      whereClause,
+      whereClause && `WHERE ${whereClause}`,
       ';',
       'SELECT @@ROWCOUNT AS AFFECTEDROWS',
       ';',
@@ -632,7 +618,7 @@ export class MsSqlQueryGenerator extends MsSqlQueryGeneratorTypeScript {
       // enums are a special case
       template = attribute.type.toSql({ dialect: this.dialect });
       template += ` CHECK (${this.quoteIdentifier(attribute.field)} IN(${attribute.type.options.values.map(value => {
-        return this.escape(value, options);
+        return this.escape(value, undefined, options);
       }).join(', ')}))`;
 
       return template;
@@ -653,7 +639,7 @@ export class MsSqlQueryGenerator extends MsSqlQueryGeneratorTypeScript {
     // Blobs/texts cannot have a defaultValue
     if (attribute.type !== 'TEXT' && attribute.type._binary !== true
         && defaultValueSchemable(attribute.defaultValue)) {
-      template += ` DEFAULT ${this.escape(attribute.defaultValue, { ...options, type: attribute.type })}`;
+      template += ` DEFAULT ${this.escape(attribute.defaultValue, attribute, options)}`;
     }
 
     if (attribute.unique === true && (options?.context !== 'changeColumn' || this.dialect.supports.alterColumn.unique)) {
@@ -930,7 +916,7 @@ export class MsSqlQueryGenerator extends MsSqlQueryGeneratorTypeScript {
             const value = Array.isArray(order) ? order[0] : order;
 
             if (value instanceof Col) {
-              return value.identifiers[0];
+              return value.col;
             }
 
             if (value instanceof Literal) {
@@ -951,15 +937,19 @@ export class MsSqlQueryGenerator extends MsSqlQueryGeneratorTypeScript {
       }
 
       if (options.offset || options.limit) {
-        fragment += ` OFFSET ${this.escape(offset, options)} ROWS`;
+        fragment += ` OFFSET ${this.escape(offset, undefined, options)} ROWS`;
       }
 
       if (options.limit) {
-        fragment += ` FETCH NEXT ${this.escape(options.limit, options)} ROWS ONLY`;
+        fragment += ` FETCH NEXT ${this.escape(options.limit, undefined, options)} ROWS ONLY`;
       }
     }
 
     return fragment;
+  }
+
+  booleanValue(value) {
+    return value ? 1 : 0;
   }
 }
 

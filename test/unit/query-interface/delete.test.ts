@@ -20,7 +20,7 @@ describe('QueryInterface#delete', () => {
 
     await sequelize.getQueryInterface().delete(
       instance,
-      User.table,
+      User.tableName,
       { firstName: ':id' },
       {
         replacements: {

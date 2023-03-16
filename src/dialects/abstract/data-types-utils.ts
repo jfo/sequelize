@@ -1,7 +1,7 @@
 import NodeUtils from 'node:util';
 import { BaseError, ValidationErrorItem } from '../../errors/index.js';
 import type { Model } from '../../model.js';
-import type { DataType, DataTypeClass, DataTypeClassOrInstance, DataTypeInstance } from './data-types.js';
+import type { DataType, DataTypeClass, DataTypeClassOrInstance, DataTypeInstance, ToSqlOptions } from './data-types.js';
 import { AbstractDataType } from './data-types.js';
 import type { AbstractDialect } from './index.js';
 
@@ -37,11 +37,7 @@ export function normalizeDataType(
 
   const type = dataTypeClassOrInstanceToInstance(Type);
 
-  if (!type.belongsToDialect(dialect)) {
-    return type.toDialectDataType(dialect);
-  }
-
-  return type;
+  return type.toDialectDataType(dialect);
 }
 
 export function dataTypeClassOrInstanceToInstance(Type: DataTypeClassOrInstance): DataTypeInstance {
@@ -51,10 +47,10 @@ export function dataTypeClassOrInstanceToInstance(Type: DataTypeClassOrInstance)
 }
 
 export function validateDataType(
-  value: unknown,
   type: AbstractDataType<any>,
-  attributeName: string = '[unnamed]',
-  modelInstance: Model<any> | null = null,
+  attributeName: string,
+  modelInstance: Model<any> | null,
+  value: unknown,
 ): ValidationErrorItem | null {
   try {
     type.validate(value);
@@ -77,13 +73,13 @@ export function validateDataType(
   }
 }
 
-export function attributeTypeToSql(type: AbstractDataType<any> | string): string {
+export function attributeTypeToSql(type: AbstractDataType<any> | string, options: ToSqlOptions): string {
   if (typeof type === 'string') {
     return type;
   }
 
   if (type instanceof AbstractDataType) {
-    return type.toSql();
+    return type.toSql(options);
   }
 
   throw new Error('attributeTypeToSql received a type that is neither a string or an instance of AbstractDataType');

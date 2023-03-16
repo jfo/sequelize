@@ -63,7 +63,7 @@ describe(Support.getTestDialectTeaser('Model'), () => {
         });
 
         it('should be ignored in table creation', async function () {
-          const fields = await this.sequelize.getQueryInterface().describeTable(this.User.table);
+          const fields = await this.sequelize.getQueryInterface().describeTable(this.User.tableName);
           expect(Object.keys(fields).length).to.equal(2);
         });
 

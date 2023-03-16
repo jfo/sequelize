@@ -1,8 +1,7 @@
 import isPlainObject from 'lodash/isPlainObject';
 import type { AbstractDialect, BindCollector } from '../dialects/abstract/index.js';
-import type { EscapeOptions } from '../dialects/abstract/query-generator-typescript.js';
-import { BaseSqlExpression } from '../expression-builders/base-sql-expression.js';
 import type { BindOrReplacements } from '../sequelize.js';
+import { escape as escapeSqlValue } from '../sql-string';
 
 type OnBind = (oldName: string) => string;
 
@@ -31,8 +30,6 @@ function mapBindParametersAndReplacements(
 ): string {
   const isNamedReplacements = isPlainObject(replacements);
   const isPositionalReplacements = Array.isArray(replacements);
-  const escapeOptions: EscapeOptions = { replacements };
-
   let lastConsumedPositionalReplacementIndex = -1;
 
   let output: string = '';
@@ -72,7 +69,7 @@ function mapBindParametersAndReplacements(
 
       const remainingString = sqlString.slice(i, sqlString.length);
 
-      const dollarStringStartMatch = remainingString.match(/^\$(?<name>[a-z_][0-9a-z_]*)?(\$)/i);
+      const dollarStringStartMatch = remainingString.match(/^\$(?<name>[a-z_][0-9a-z_])?(\$)/i);
       const tagName = dollarStringStartMatch?.groups?.name ?? '';
 
       if (currentDollarStringTagName === tagName) {
@@ -151,7 +148,6 @@ function mapBindParametersAndReplacements(
       const dollarStringStartMatch = remainingString.match(/^\$(?<name>[a-z_][0-9a-z_]*)?\$/i);
       if (dollarStringStartMatch) {
         currentDollarStringTagName = dollarStringStartMatch.groups?.name ?? '';
-        i += dollarStringStartMatch[0].length - 1;
 
         continue;
       }
@@ -206,7 +202,7 @@ function mapBindParametersAndReplacements(
         throw new Error(`Named replacement ":${replacementName}" has no entry in the replacement map.`);
       }
 
-      const escapedReplacement = escapeValueWithBackCompat(replacementValue, dialect, escapeOptions);
+      const escapedReplacement = escapeSqlValue(replacementValue, undefined, dialect, true);
 
       // add everything before the bind parameter name
       output += sqlString.slice(previousSliceEnd, i);
@@ -247,7 +243,7 @@ function mapBindParametersAndReplacements(
         throw new Error(`Positional replacement (?) ${replacementIndex} has no entry in the replacement map (replacements[${replacementIndex}] is undefined).`);
       }
 
-      const escapedReplacement = escapeValueWithBackCompat(replacementValue, dialect, escapeOptions);
+      const escapedReplacement = escapeSqlValue(replacementValue, undefined, dialect, true);
 
       // add everything before the bind parameter name
       output += sqlString.slice(previousSliceEnd, i);
@@ -265,19 +261,6 @@ function mapBindParametersAndReplacements(
   output += sqlString.slice(previousSliceEnd, sqlString.length);
 
   return output;
-}
-
-function escapeValueWithBackCompat(value: unknown, dialect: AbstractDialect, escapeOptions: EscapeOptions): string {
-  // Arrays used to be escaped as sql lists, not sql arrays
-  // now they must be escaped as sql arrays, and the old behavior has been moved to the list() function.
-  // The problem is that if we receive a list of list, there are cases where we don't want the extra parentheses around the list,
-  // such as in the case of a bulk insert.
-  // As a workaround, non-list arrays that contain dynamic values are joined with commas.
-  if (Array.isArray(value) && value.some(item => item instanceof BaseSqlExpression)) {
-    return value.map(item => dialect.queryGenerator.escape(item, escapeOptions)).join(', ');
-  }
-
-  return dialect.queryGenerator.escape(value, escapeOptions);
 }
 
 function canPrecedeNewToken(char: string | undefined): boolean {

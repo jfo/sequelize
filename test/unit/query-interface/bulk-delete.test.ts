@@ -17,7 +17,7 @@ describe('QueryInterface#bulkDelete', () => {
     const stub = sinon.stub(sequelize, 'queryRaw');
 
     await sequelize.getQueryInterface().bulkDelete(
-      User.table,
+      User.tableName,
       { firstName: ':id' },
       {
         replacements: {

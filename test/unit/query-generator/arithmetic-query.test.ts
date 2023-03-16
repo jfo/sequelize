@@ -80,7 +80,7 @@ describe('QueryGenerator#arithmeticQuery', () => {
   it('parses named replacements in literals', async () => {
     const sql = queryGenerator.arithmeticQuery(
       '+',
-      User.table,
+      User.tableName,
       // where
       literal('id = :id'),
       // increment by field

@@ -1,11 +1,11 @@
 import * as BaseTypes from '../abstract/data-types.js';
-import type { AcceptedDate } from '../abstract/data-types.js';
+import type { AcceptedDate, ToSqlOptions } from '../abstract/data-types.js';
 import type { AbstractDialect } from '../abstract/index.js';
 export declare class BLOB extends BaseTypes.BLOB {
     toSql(): string;
 }
 export declare class STRING extends BaseTypes.STRING {
-    toSql(): string;
+    toSql(options: ToSqlOptions): string;
 }
 export declare class CHAR extends BaseTypes.CHAR {
     toSql(): string;
