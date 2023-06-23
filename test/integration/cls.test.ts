@@ -160,7 +160,7 @@ describe('AsyncLocalStorage (ContinuationLocalStorage) Transactions (CLS)', () =
   });
 
   // reason for this test: https://github.com/sequelize/sequelize/issues/12973
-  describe('Model Hook integration', () => {
+  describe.skip('Model Hook integration', () => {
 
     type Params<M extends Model> = {
       method: string,

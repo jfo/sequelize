@@ -149,6 +149,7 @@ Got ${NodeUtil.inspect(include)} instead`);
 }
 
 export function setTransactionFromCls(options: Transactionable, sequelize: Sequelize): void {
+  return;
   if (options.transaction === undefined) {
     options.transaction = sequelize.getCurrentClsTransaction();
   }
